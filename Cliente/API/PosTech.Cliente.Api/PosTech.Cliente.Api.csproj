@@ -15,10 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Cliente.Controllers\PosTech.Cliente.Controllers.csproj" />
-    <ProjectReference Include="..\PosTech.Cliente.Gateways\PosTech.Cliente.Gateways.csproj" />
-    <ProjectReference Include="..\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
-    <ProjectReference Include="..\PosTech.Cliente.Repository.NoSql\PosTech.Cliente.Repository.NoSql.csproj" />
+    <ProjectReference Include="..\..\Controller\PosTech.Cliente.Controllers\PosTech.Cliente.Controllers.csproj" />
+    <ProjectReference Include="..\..\Gateway\PosTech.Cliente.Gateways\PosTech.Cliente.Gateways.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\PosTech.Cliente.Repository.NoSql\PosTech.Cliente.Repository.NoSql.csproj" />
+    <ProjectReference Include="..\..\Interface\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

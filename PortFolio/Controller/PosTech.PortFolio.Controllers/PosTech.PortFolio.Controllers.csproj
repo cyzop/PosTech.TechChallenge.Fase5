@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
-    <ProjectReference Include="..\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
-    <ProjectReference Include="..\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
-    <ProjectReference Include="..\PosTech.PortFolio.UseCases\PosTech.PortFolio.UseCases.csproj" />
+    <ProjectReference Include="..\..\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
+    <ProjectReference Include="..\..\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
+    <ProjectReference Include="..\..\UseCase\PosTech.PortFolio.UseCases\PosTech.PortFolio.UseCases.csproj" />
   </ItemGroup>
 
 </Project>

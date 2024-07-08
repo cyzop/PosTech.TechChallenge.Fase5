@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Cliente.DAO\PosTech.Cliente.DAO.csproj" />
-    <ProjectReference Include="..\PostTech.Client.Entities\PostTech.Cliente.Entities.csproj" />
+    <ProjectReference Include="..\..\Entity\PostTech.Client.Entities\PostTech.Cliente.Entities.csproj" />
+    <ProjectReference Include="..\..\Presenter\PosTech.Cliente.DAO\PosTech.Cliente.DAO.csproj" />
   </ItemGroup>
 
 </Project>

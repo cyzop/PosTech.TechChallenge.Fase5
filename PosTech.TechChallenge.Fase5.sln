@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34302.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.Api", "Cliente\API\PosTech.Cliente.Api\PosTech.Cliente.Api.csproj", "{6BD7FED0-D97A-4534-9C42-109C2818B187}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.Api", "Cliente\API\PosTech.Cliente.Api\PosTech.Cliente.Api.csproj", "{6BD7FED0-D97A-4534-9C42-109C2818B187}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{CBE27717-1D6D-446A-925B-A3B396DF50EA}"
 EndProject
@@ -25,17 +25,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PortFolio", "PortFolio", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{79044D11-842C-43E2-B204-2FC7C7C97ECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.UseCases", "Cliente\UseCase\PosTech.Cliente.UseCase\PosTech.Cliente.UseCases.csproj", "{970F2127-1C12-474A-B6B4-BFC329465DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.UseCases", "Cliente\UseCase\PosTech.Cliente.UseCase\PosTech.Cliente.UseCases.csproj", "{970F2127-1C12-474A-B6B4-BFC329465DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostTech.Cliente.Entities", "Cliente\Entity\PostTech.Client.Entities\PostTech.Cliente.Entities.csproj", "{035C398A-BDA7-4E00-BC2F-E970E45CC436}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostTech.Cliente.Entities", "Cliente\Entity\PostTech.Client.Entities\PostTech.Cliente.Entities.csproj", "{035C398A-BDA7-4E00-BC2F-E970E45CC436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.Gateways", "Cliente\Gateway\PosTech.Cliente.Gateways\PosTech.Cliente.Gateways.csproj", "{B84808F9-9EE3-4232-8E12-226EDBC5B532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.Gateways", "Cliente\Gateway\PosTech.Cliente.Gateways\PosTech.Cliente.Gateways.csproj", "{B84808F9-9EE3-4232-8E12-226EDBC5B532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.Interfaces", "Cliente\Interface\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj", "{4614FF5F-EAF1-4499-8AAE-4C7FB821DB10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.Interfaces", "Cliente\Interface\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj", "{4614FF5F-EAF1-4499-8AAE-4C7FB821DB10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.Controllers", "Cliente\Controller\PosTech.Cliente.Controllers\PosTech.Cliente.Controllers.csproj", "{0B61574F-842A-4007-A6FB-89C9155E5391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.Controllers", "Cliente\Controller\PosTech.Cliente.Controllers\PosTech.Cliente.Controllers.csproj", "{0B61574F-842A-4007-A6FB-89C9155E5391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Api", "PortFolio\API\PosTech.PortFolio.Api\PosTech.PortFolio.Api.csproj", "{C6834668-3563-48BF-9793-7C550D86DF8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Api", "PortFolio\API\PosTech.PortFolio.Api\PosTech.PortFolio.Api.csproj", "{C6834668-3563-48BF-9793-7C550D86DF8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controller", "Controller", "{B69F1963-DEBE-4844-AAEA-42EF64625C04}"
 EndProject
@@ -47,37 +47,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface", "Interface", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseCase", "UseCase", "{552DDCC8-B636-40DE-8146-2C05B17335D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Controllers", "PortFolio\Controller\PosTech.PortFolio.Controllers\PosTech.PortFolio.Controllers.csproj", "{FF85353B-E52D-4228-A13F-0183834EB0B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Controllers", "PortFolio\Controller\PosTech.PortFolio.Controllers\PosTech.PortFolio.Controllers.csproj", "{FF85353B-E52D-4228-A13F-0183834EB0B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Entities", "PortFolio\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj", "{CECCDD71-730D-41B0-B0F0-2CA4CA80AFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Entities", "PortFolio\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj", "{CECCDD71-730D-41B0-B0F0-2CA4CA80AFFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Gateways", "PortFolio\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj", "{6A053721-03A2-444C-B1C8-46E0AE230F26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Gateways", "PortFolio\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj", "{6A053721-03A2-444C-B1C8-46E0AE230F26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Interfaces", "PortFolio\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj", "{283D6AC4-BC0E-4988-AC91-FAE9D0A53454}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Interfaces", "PortFolio\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj", "{283D6AC4-BC0E-4988-AC91-FAE9D0A53454}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.UseCases", "PortFolio\UseCase\PosTech.PortFolio.UseCases\PosTech.PortFolio.UseCases.csproj", "{A5E04F40-76AC-4E18-B3ED-D614BADB5F5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.UseCases", "PortFolio\UseCase\PosTech.PortFolio.UseCases\PosTech.PortFolio.UseCases.csproj", "{A5E04F40-76AC-4E18-B3ED-D614BADB5F5E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2EF62C86-7AF9-4236-8D4B-DB7DB2719DE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.Repository.NoSql", "Cliente\Infrastructure\PosTech.Cliente.Repository.NoSql\PosTech.Cliente.Repository.NoSql.csproj", "{516F0311-C96D-41BA-B9AC-EB5459B5ED76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.Repository.NoSql", "Cliente\Infrastructure\PosTech.Cliente.Repository.NoSql\PosTech.Cliente.Repository.NoSql.csproj", "{516F0311-C96D-41BA-B9AC-EB5459B5ED76}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{041E006F-4C1A-414D-B75D-505C4E9C867F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Repository.NoSql", "PortFolio\InfrastructurePosTech.PortFolio.Repository.NoSql\PosTech.PortFolio.Repository.NoSql.csproj", "{7247F160-D99B-4BCF-8A6B-99879E0C1ED2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.DAO", "Cliente\Presenter\PosTech.Cliente.DAO\PosTech.Cliente.DAO.csproj", "{D95F366B-AA55-45BB-83D2-D62D2BA789D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.DAO", "Cliente\Presenter\PosTech.Cliente.DAO\PosTech.Cliente.DAO.csproj", "{D95F366B-AA55-45BB-83D2-D62D2BA789D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B426DB27-0DCD-4040-AD8F-DD59F4F4AF10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.TechChallenge.Shared", "Shared\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj", "{3C4088B1-9E6B-4D00-ABFC-54DD26627B61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.TechChallenge.Shared", "Shared\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj", "{3C4088B1-9E6B-4D00-ABFC-54DD26627B61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Cliente.Messages", "Cliente\Presenter\PosTech.Cliente.Messages\PosTech.Cliente.Messages.csproj", "{1C5A55BC-C934-45CC-B51D-870540A103C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.Cliente.Messages", "Cliente\Presenter\PosTech.Cliente.Messages\PosTech.Cliente.Messages.csproj", "{1C5A55BC-C934-45CC-B51D-870540A103C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenter", "Presenter", "{475FB130-100F-40EE-9040-F66919C69374}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.DAO", "PortFolio\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj", "{5CD430C8-7662-4C5E-B02F-43045F921B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.DAO", "PortFolio\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj", "{5CD430C8-7662-4C5E-B02F-43045F921B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Messages", "PortFolio\Presenter\PosTech.PortFolio.Messages\PosTech.PortFolio.Messages.csproj", "{D638334A-B3EC-415B-AFDD-6BA1E5873A0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Messages", "PortFolio\Presenter\PosTech.PortFolio.Messages\PosTech.PortFolio.Messages.csproj", "{D638334A-B3EC-415B-AFDD-6BA1E5873A0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Repository.NoSql", "PortFolio\Infrastructure\PosTech.PortFolio.Repository.NoSql\PosTech.PortFolio.Repository.NoSql.csproj", "{A6569038-E472-4615-BF95-F9E4CCA040D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,10 +137,6 @@ Global
 		{516F0311-C96D-41BA-B9AC-EB5459B5ED76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{516F0311-C96D-41BA-B9AC-EB5459B5ED76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{516F0311-C96D-41BA-B9AC-EB5459B5ED76}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7247F160-D99B-4BCF-8A6B-99879E0C1ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7247F160-D99B-4BCF-8A6B-99879E0C1ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7247F160-D99B-4BCF-8A6B-99879E0C1ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7247F160-D99B-4BCF-8A6B-99879E0C1ED2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D95F366B-AA55-45BB-83D2-D62D2BA789D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D95F366B-AA55-45BB-83D2-D62D2BA789D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D95F366B-AA55-45BB-83D2-D62D2BA789D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -161,6 +157,10 @@ Global
 		{D638334A-B3EC-415B-AFDD-6BA1E5873A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D638334A-B3EC-415B-AFDD-6BA1E5873A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D638334A-B3EC-415B-AFDD-6BA1E5873A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,13 +194,13 @@ Global
 		{2EF62C86-7AF9-4236-8D4B-DB7DB2719DE0} = {CB0BBD4A-CDA4-434D-A5E3-F265DB4EA10E}
 		{516F0311-C96D-41BA-B9AC-EB5459B5ED76} = {2EF62C86-7AF9-4236-8D4B-DB7DB2719DE0}
 		{041E006F-4C1A-414D-B75D-505C4E9C867F} = {31AB487C-AD4C-4729-9CC9-945EFCABEDB0}
-		{7247F160-D99B-4BCF-8A6B-99879E0C1ED2} = {041E006F-4C1A-414D-B75D-505C4E9C867F}
 		{D95F366B-AA55-45BB-83D2-D62D2BA789D2} = {CCD289E8-8474-4A68-A2C0-847E7D9EA5B9}
 		{3C4088B1-9E6B-4D00-ABFC-54DD26627B61} = {B426DB27-0DCD-4040-AD8F-DD59F4F4AF10}
 		{1C5A55BC-C934-45CC-B51D-870540A103C0} = {CCD289E8-8474-4A68-A2C0-847E7D9EA5B9}
 		{475FB130-100F-40EE-9040-F66919C69374} = {31AB487C-AD4C-4729-9CC9-945EFCABEDB0}
 		{5CD430C8-7662-4C5E-B02F-43045F921B75} = {475FB130-100F-40EE-9040-F66919C69374}
 		{D638334A-B3EC-415B-AFDD-6BA1E5873A0C} = {475FB130-100F-40EE-9040-F66919C69374}
+		{A6569038-E472-4615-BF95-F9E4CCA040D3} = {041E006F-4C1A-414D-B75D-505C4E9C867F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9C716AC-59BB-4F94-9335-6CD3C57888BF}

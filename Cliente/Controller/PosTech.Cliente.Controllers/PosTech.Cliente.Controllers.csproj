@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
-    <ProjectReference Include="..\PosTech.Cliente.UseCase\PosTech.Cliente.UseCases.csproj" />
-    <ProjectReference Include="..\PostTech.Client.Entities\PostTech.Cliente.Entities.csproj" />
+    <ProjectReference Include="..\..\Entity\PostTech.Client.Entities\PostTech.Cliente.Entities.csproj" />
+    <ProjectReference Include="..\..\Interface\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
+    <ProjectReference Include="..\..\UseCase\PosTech.Cliente.UseCase\PosTech.Cliente.UseCases.csproj" />
   </ItemGroup>
 
 </Project>

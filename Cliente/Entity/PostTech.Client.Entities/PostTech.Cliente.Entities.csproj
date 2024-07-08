@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Cliente.Messages\PosTech.Cliente.Messages.csproj" />
-    <ProjectReference Include="..\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj" />
+    <ProjectReference Include="..\..\..\Shared\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj" />
+    <ProjectReference Include="..\..\Presenter\PosTech.Cliente.Messages\PosTech.Cliente.Messages.csproj" />
   </ItemGroup>
 
 </Project>

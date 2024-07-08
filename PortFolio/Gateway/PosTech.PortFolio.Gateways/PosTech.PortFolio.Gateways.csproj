@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
-    <ProjectReference Include="..\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
+    <ProjectReference Include="..\..\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

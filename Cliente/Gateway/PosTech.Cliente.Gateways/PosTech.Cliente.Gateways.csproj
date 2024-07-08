@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Interface\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

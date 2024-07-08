@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Cliente.Messages\PosTech.Cliente.Messages.csproj" />
-    <ProjectReference Include="..\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
-    <ProjectReference Include="..\PosTech.PortFolio.Messages\PosTech.PortFolio.Messages.csproj" />
-    <ProjectReference Include="..\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj" />
+    <ProjectReference Include="..\..\..\Shared\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj" />
+    <ProjectReference Include="..\..\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
+    <ProjectReference Include="..\..\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
+    <ProjectReference Include="..\..\Presenter\PosTech.PortFolio.Messages\PosTech.PortFolio.Messages.csproj" />
   </ItemGroup>
 
 </Project>

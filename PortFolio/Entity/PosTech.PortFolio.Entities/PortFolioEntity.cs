@@ -1,18 +1,10 @@
 ﻿namespace PosTech.PortFolio.Entities
 {
-    public class PortFolioEntity
+    public class PortFolioEntity : EntityBase
     {
-        public int Id { get; }
-        public ClienteEntity Cliente { get; }
-        public string Nome { get; }
-        public string Descricao { get; }
-
-        public PortFolioEntity(int id, ClienteEntity cliente, string nome, string descricao)
-        {
-            Id = id;
-            Cliente = cliente;
-            Nome = nome;
-            Descricao = descricao;
-        }
+        public string ClienteId { get; set; }
+        public virtual ClienteEntity Cliente { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
     }
 }

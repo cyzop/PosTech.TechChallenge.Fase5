@@ -5,6 +5,9 @@ namespace PosTech.PortFolio.Interfaces.Gateways
 {
     public interface IUsuarioGateway
     {
-        ClienteEntity ObterPorId(object id);
+        ClienteEntity ObterPorEmail(string email);
+        ClienteEntity ObterPorId(string id);
+        void RegistrarUsuario(ClienteEntity novoUsuario);
+        IEnumerable<ClienteEntity> ObterUsuarios();
     }
 }

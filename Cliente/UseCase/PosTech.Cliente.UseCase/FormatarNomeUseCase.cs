@@ -1,4 +1,4 @@
-﻿using PostTech.Cliente.Entities;
+﻿using PosTech.Cliente.Entities;
 using System.Globalization;
 
 namespace PosTech.Cliente.UseCases

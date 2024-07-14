@@ -1,6 +1,6 @@
 ﻿using PosTech.Cliente.Interfaces.Gateways;
 using PosTech.Cliente.Interfaces.Repositories;
-using PostTech.Cliente.Entities;
+using PosTech.Cliente.Entities;
 
 namespace PosTech.Cliente.Gateways
 {

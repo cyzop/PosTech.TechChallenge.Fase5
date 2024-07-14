@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using PosTech.PortFolio.Entities;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace PosTech.TechChallenge.Shared
@@ -68,8 +69,18 @@ namespace PosTech.TechChallenge.Shared
             {
                 throw new ArgumentException(message);
             }
-
         }
 
+        public static void AssertArgumentIsNull(object objectData, string message)
+        {
+            if (objectData != null)
+                throw new ArgumentException(message);
+        }
+
+        public static void AssetArgumentNotEquals(string baseValue, string value, string message)
+        {
+            if((bool)baseValue?.Equals(value, StringComparison.InvariantCultureIgnoreCase))
+                throw new ArgumentException(message);
+        }
     }
 }

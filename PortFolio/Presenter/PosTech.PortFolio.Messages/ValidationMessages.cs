@@ -1,9 +1,8 @@
 ﻿namespace PosTech.PortFolio.Messages
 {
-    public class ValidationMessages
+    public static class ValidationMessages
     {
-        public static string MensagemQuantidadeAtivosInvalida = "A quantidade de ativos informada está inválida!";
-        public static string MensagemValorAtivoInvalido = "O valor do ativo é inválido!";
-
+        public static string MensagemNomeVazio = "O nome não pode estar vazio!";
+        
     }
 }

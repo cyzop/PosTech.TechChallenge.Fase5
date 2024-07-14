@@ -79,6 +79,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Messages"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Repository.NoSql", "PortFolio\Infrastructure\PosTech.PortFolio.Repository.NoSql\PosTech.PortFolio.Repository.NoSql.csproj", "{A6569038-E472-4615-BF95-F9E4CCA040D3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Repository.Sql", "PortFolio\Infrastructure\PosTech.PorfFolio.Repository.Sql\PosTech.PortFolio.Repository.Sql.csproj", "{6B301FA0-838B-4820-8468-947B4A565B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.Adapter", "PosTech.PortFolio.Adapter\PosTech.PortFolio.Adapter.csproj", "{18DCA8E4-C685-4A4A-916F-13069DB79907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Client.Repositoty.Sql", "PosTech.Client.Repositoty.Sql\PosTech.Client.Repositoty.Sql.csproj", "{7CC66324-37D9-43B0-A777-BCD55420E37B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +167,18 @@ Global
 		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6569038-E472-4615-BF95-F9E4CCA040D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B301FA0-838B-4820-8468-947B4A565B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B301FA0-838B-4820-8468-947B4A565B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B301FA0-838B-4820-8468-947B4A565B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B301FA0-838B-4820-8468-947B4A565B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DCA8E4-C685-4A4A-916F-13069DB79907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DCA8E4-C685-4A4A-916F-13069DB79907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DCA8E4-C685-4A4A-916F-13069DB79907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DCA8E4-C685-4A4A-916F-13069DB79907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC66324-37D9-43B0-A777-BCD55420E37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC66324-37D9-43B0-A777-BCD55420E37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC66324-37D9-43B0-A777-BCD55420E37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC66324-37D9-43B0-A777-BCD55420E37B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -201,6 +219,9 @@ Global
 		{5CD430C8-7662-4C5E-B02F-43045F921B75} = {475FB130-100F-40EE-9040-F66919C69374}
 		{D638334A-B3EC-415B-AFDD-6BA1E5873A0C} = {475FB130-100F-40EE-9040-F66919C69374}
 		{A6569038-E472-4615-BF95-F9E4CCA040D3} = {041E006F-4C1A-414D-B75D-505C4E9C867F}
+		{6B301FA0-838B-4820-8468-947B4A565B01} = {041E006F-4C1A-414D-B75D-505C4E9C867F}
+		{18DCA8E4-C685-4A4A-916F-13069DB79907} = {475FB130-100F-40EE-9040-F66919C69374}
+		{7CC66324-37D9-43B0-A777-BCD55420E37B} = {2EF62C86-7AF9-4236-8D4B-DB7DB2719DE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9C716AC-59BB-4F94-9335-6CD3C57888BF}

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
+    <ProjectReference Include="..\..\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
   </ItemGroup>
 
 </Project>

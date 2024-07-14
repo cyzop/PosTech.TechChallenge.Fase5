@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\PosTech.PortFolio.Adapter\PosTech.PortFolio.Adapter.csproj" />
     <ProjectReference Include="..\..\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
     <ProjectReference Include="..\..\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
-    <ProjectReference Include="..\..\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
     <ProjectReference Include="..\..\UseCase\PosTech.PortFolio.UseCases\PosTech.PortFolio.UseCases.csproj" />
   </ItemGroup>
 

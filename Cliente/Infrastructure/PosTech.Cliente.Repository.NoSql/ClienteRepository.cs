@@ -4,7 +4,7 @@ using PosTech.Cliente.Interfaces.Repositories;
 using PosTech.Cliente.Repository.NoSql.Adapter;
 using PosTech.Cliente.Repository.NoSql.Model;
 using PosTech.Cliente.Repository.NoSql.Settings;
-using PostTech.Cliente.Entities;
+using PosTech.Cliente.Entities;
 
 namespace PosTech.Cliente.Repository.NoSql
 {

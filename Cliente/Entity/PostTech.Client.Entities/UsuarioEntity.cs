@@ -1,7 +1,7 @@
 ﻿using PosTech.Cliente.Messages;
 using PosTech.TechChallenge.Shared;
 
-namespace PostTech.Cliente.Entities
+namespace PosTech.Cliente.Entities
 {
     public class UsuarioEntity : EntityBase
     {

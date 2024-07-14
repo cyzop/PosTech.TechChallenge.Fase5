@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PortFolio\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
+    <ProjectReference Include="..\PortFolio\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
+  </ItemGroup>
+
+</Project>

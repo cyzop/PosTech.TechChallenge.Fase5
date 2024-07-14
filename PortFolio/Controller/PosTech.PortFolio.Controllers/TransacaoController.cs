@@ -1,7 +1,9 @@
-﻿using PosTech.PortFolio.DAO;
+﻿using PosTech.PortFolio.Adapter;
+using PosTech.PortFolio.DAO;
+using PosTech.PortFolio.Entities;
 using PosTech.PortFolio.Interfaces.Controller;
 using PosTech.PortFolio.Interfaces.Gateways;
-using PosTech.PortFolio.UseCases;
+using PosTech.PortFolio.UseCases.Transacao;
 
 namespace PosTech.PortFolio.Controllers
 {
@@ -18,7 +20,27 @@ namespace PosTech.PortFolio.Controllers
             _transacaoGateway = transacaoGateway;
         }
 
-        public string RegistrarCompra(PortFolioDao portFolioDao, AtivoDao ativoDao)
+        public IEnumerable<TransacaoDao> ListarPorPortFolio(string portfolioId)
+        {
+            return _transacaoGateway
+                .ObterPorPortFolio(portfolioId)?
+                .Select(t => TransacaoDaoAdapter.GetDaoFromEntity(t));
+        }
+
+        public IEnumerable<TransacaoDao> ListarTodos()
+        {
+            return _transacaoGateway
+                .ObterTodos()?
+                .Select(t => TransacaoDaoAdapter.GetDaoFromEntity(t));
+        }
+
+        public TransacaoDao ObterPorId(string id)
+        {
+            var transacao = _transacaoGateway.ObterPorId(id);
+            return TransacaoDaoAdapter.GetDaoFromEntity(transacao);
+        }
+
+        public TransacaoDao RegistrarCompra(PortFolioDao portFolioDao, AtivoTransacaoDao ativoDao)
         {
             var portFolio = _portfolioGateway.ObterPorId(portFolioDao.Id);
             
@@ -32,42 +54,25 @@ namespace PosTech.PortFolio.Controllers
             //transacao gateway (registrar a transacao)
             _transacaoGateway.RegistrarTransacao(transacao);
 
-            return string.Empty;
+            return TransacaoDaoAdapter.GetDaoFromEntity(transacao);
         }
-        internal string RegistrarVenda(UsuarioDao clienteDao, List<AtivoDao> produtos)
+        public TransacaoDao RegistrarVenda(PortFolioDao portFolioDao, AtivoTransacaoDao ativoDao)
         {
-            //cliente gateway (obter por id)
-            //ativos gateway (obter por codigo)
+            var portFolio = _portfolioGateway.ObterPorId(portFolioDao.Id);
+
+            //ativo por codigo
+            var ativo = _ativosGateway.ObterPorCodigo(ativoDao.Codigo);
+
             //transacao use case
+            RegistrarTransacaoVendaUseCase registroTransacao = new RegistrarTransacaoVendaUseCase(portFolio, ativo, ativoDao.Quantidade, ativoDao.Preco);
+            var transacao = registroTransacao.FinalizarTransacao();
+
             //transacao gateway (registrar a transacao)
+            _transacaoGateway.RegistrarTransacao(transacao);
 
-            return string.Empty;
+            return TransacaoDaoAdapter.GetDaoFromEntity(transacao);
         }
-        //internal string RegistrarVenda(VendedorDAO vendedorDAO, List<ProdutoDAO> produtoListDAO, IDatabaseClient databaseClient)
-        //{
-        //    // quem chama esta passando apenas os dados!
-        //    IVendedorGateway vendedorGateway = new VendedorGateway(databaseClient);
-        //    IVendaGateway vendaGateway = new VendaGateway(databaseClient);
-        //    IProdutoGateway produtoGateway = new ProdutoGateway(databaseClient);
-
-        //    var vendedor = vendedorGateway.ObterPorIdentificacao(identificacao: vendedorDAO.Identificacao);
-        //    List<ProdutoEntity> produtosVenda = new List<ProdutoEntity>();
-
-        //    foreach (ProdutoDAO produtoDAO in produtoListDAO)
-        //    {
-        //        var produto = produtoGateway.ObterPorIdentificacao(produtoDAO.Identificacao);
-
-        //        if (produtoDAO.Desconto != null)
-        //            produto.DefinirDesconto(produtoDAO.Desconto.Value);
-        //        produtosVenda.Add(produto);
-        //    }
-
-        //    var registrarVendaUseCase = new RegistrarVendaUseCase(vendedor, produtosVenda);
-        //    var venda = registrarVendaUseCase.FinalizarVenda();
-        //    vendaGateway.RegistrarVenda(venda);
-
-        //    return VendaAdapter.ToJson(venda);
-        //}
+        
 
     }
 }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\PortFolio\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

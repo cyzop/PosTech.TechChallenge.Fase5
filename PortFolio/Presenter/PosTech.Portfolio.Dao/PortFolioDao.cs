@@ -2,7 +2,10 @@
 {
     public class PortFolioDao
     {
-        public required string Id { get; set; }
-        public string? Nome { get; set; }
+        public string Id { get; set; }
+        public string Nome { get; set; }
+        public string? Descricao { get; set; }
+
+        public UsuarioDao UsuarioDao { get; set; }
     }
 }

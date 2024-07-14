@@ -1,22 +1,31 @@
 ﻿using PosTech.PortFolio.Entities;
-using PosTech.PortFolio.Messages;
+using PosTech.PortFolio.Messages.Ativo;
 using PosTech.TechChallenge.Shared;
 
-namespace PosTech.PortFolio.UseCases
+namespace PosTech.PortFolio.UseCases.Transacao
 {
-    public class RegistrarTransacaoCompraUseCase
+    public class RegistrarTransacaoVendaUseCase
     {
         private readonly TransacaoEntity Transacao;
         private readonly int _quantidadeAtivos;
         private readonly double _valorUnitario;
 
-        public RegistrarTransacaoCompraUseCase(PortFolioEntity portFolio,
+        public RegistrarTransacaoVendaUseCase(PortFolioEntity portFolio,
             AtivoEntity ativo, int quantidade, double preco)
         {
             _quantidadeAtivos = quantidade;
             _valorUnitario = preco;
 
-            Transacao = new TransacaoEntity(TipoTransacao.Compra, portFolio, ativo);
+            Transacao = new TransacaoEntity()
+            {
+                Id = Guid.NewGuid().ToString(),
+                TipoTransacao = TipoTransacao.Venda,
+                Ativo = ativo,
+                AtivoId = ativo.Id,
+                DataCriacao = DateTime.Now,
+                PortFolio = portFolio,
+                PortFolioId = portFolio.Id
+            };
         }
 
         public TransacaoEntity FinalizarTransacao()

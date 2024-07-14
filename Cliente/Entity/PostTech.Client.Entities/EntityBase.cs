@@ -1,4 +1,4 @@
-﻿namespace PostTech.Cliente.Entities 
+﻿namespace PosTech.Cliente.Entities 
 { 
     public abstract class EntityBase
     {

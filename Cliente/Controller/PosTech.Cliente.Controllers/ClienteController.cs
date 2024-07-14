@@ -1,7 +1,7 @@
 ﻿using PosTech.Cliente.Interfaces.Controller;
 using PosTech.Cliente.Interfaces.Gateways;
 using PosTech.Cliente.UseCases;
-using PostTech.Cliente.Entities;
+using PosTech.Cliente.Entities;
 
 namespace PosTech.Cliente.DAO
 {

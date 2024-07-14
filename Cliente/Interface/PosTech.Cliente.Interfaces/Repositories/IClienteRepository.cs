@@ -1,4 +1,4 @@
-﻿using PostTech.Cliente.Entities;
+﻿using PosTech.Cliente.Entities;
 
 namespace PosTech.Cliente.Interfaces.Repositories
 {

@@ -3,7 +3,7 @@
     public class AtivoDao
     {
         public required string Codigo { get; set; }
-        public required double Preco { get; set; }
-        public required int Quantidade { get; set; }
+        public string? Nome { get; set; }
+        public string? Tipo { get; set; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿namespace PosTech.PortFolio.Entities
 {
-    public class ClienteEntity
+    public class ClienteEntity : EntityBase
     {
-        public string Id { get; private set; }
-        public string Nome { get; private set; }
-        public string Email { get; private set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+
+        public string? Senha { get; set; }
     }
 }

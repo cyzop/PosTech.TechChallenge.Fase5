@@ -6,6 +6,8 @@ using PosTech.PortFolio.DAO;
 
 namespace PosTech.PortFolio.Api.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
         private readonly ILogger<ClienteController> _logger;
@@ -17,7 +19,7 @@ namespace PosTech.PortFolio.Api.Controllers
             _usuarioController = usuarioController;
         }
 
-        [HttpGet("/{Id}")]
+        [HttpGet("{Id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ClienteModel))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetUsuarioPorId(string Id)
@@ -36,7 +38,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -59,7 +61,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -166,7 +168,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

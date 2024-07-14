@@ -9,12 +9,15 @@ namespace PosTech.PortFolio.UseCases.Transacao
         private readonly TransacaoEntity Transacao;
         private readonly int _quantidadeAtivos;
         private readonly double _valorUnitario;
+        private readonly InvestimentoEntity _saldoAtivo;
 
         public RegistrarTransacaoVendaUseCase(PortFolioEntity portFolio,
-            AtivoEntity ativo, int quantidade, double preco)
+            AtivoEntity ativo, int quantidade, double preco,
+            InvestimentoEntity saldoAtivo)
         {
             _quantidadeAtivos = quantidade;
             _valorUnitario = preco;
+            _saldoAtivo = saldoAtivo;
 
             Transacao = new TransacaoEntity()
             {
@@ -30,6 +33,8 @@ namespace PosTech.PortFolio.UseCases.Transacao
 
         public TransacaoEntity FinalizarTransacao()
         {
+            AssertionConcern.AssertArgumentMinValue(_quantidadeAtivos, _saldoAtivo.Quantidade,  ValidationMessages.MensagemSaldoAtivoInsuficiente);
+
             AssertionConcern.AssertArgumentMinValue(1, _quantidadeAtivos, ValidationMessages.MensagemQuantidadeAtivosInvalida);
             Transacao.SetQuantidade(_quantidadeAtivos);
 

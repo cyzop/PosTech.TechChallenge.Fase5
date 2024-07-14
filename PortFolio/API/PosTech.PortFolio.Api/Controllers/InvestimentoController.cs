@@ -6,30 +6,30 @@ namespace PosTech.PortFolio.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AtivoController : ControllerBase
+    public class InvestimentoController : ControllerBase
     {
-        private readonly ILogger<AtivoController> _logger;
-        private readonly IAtivoController _controller;
+        private readonly IMercadoFinanceiroController _controller;
+        private readonly ILogger<InvestimentoController> _logger;
 
-        public AtivoController(ILogger<AtivoController> logger, IAtivoController controller)
+        public InvestimentoController(IMercadoFinanceiroController mercadoFinanceiroController, ILogger<InvestimentoController> logger)
         {
+            _controller = mercadoFinanceiroController;
             _logger = logger;
-            _controller = controller;
         }
 
 
-        [HttpGet("Listar")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AtivoDao>))]
+        [HttpGet("ListarAtivos")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<CotacaoAtivoDao>))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAtivos()
         {
             try
             {
-                var ativos = _controller.ListarDisponiveis();
+                var ativos = _controller.ListarAtivos();
                 var quantidade = ativos?.Count() ?? 0;
 
-                _logger.LogInformation("Get Ativos length {quantidade}", quantidade);
+                _logger.LogInformation("Get Cotação Ativos length {quantidade}", quantidade);
 
                 if (ativos?.Count() > 0)
                     return Ok(ativos);
@@ -42,7 +42,5 @@ namespace PosTech.PortFolio.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-
     }
 }

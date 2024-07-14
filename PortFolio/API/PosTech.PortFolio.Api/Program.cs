@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using PosTech.PortFolio.Api.Extensions;
-using PosTech.PortFolio.Interfaces.Repositories;
 using PosTech.PortFolio.Repository.Sql;
 
 var builder = WebApplication.CreateBuilder(args);

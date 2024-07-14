@@ -41,7 +41,7 @@ namespace PosTech.Cliente.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -64,7 +64,7 @@ namespace PosTech.Cliente.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -172,7 +172,7 @@ namespace PosTech.Cliente.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

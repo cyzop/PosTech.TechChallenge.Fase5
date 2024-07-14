@@ -6,5 +6,6 @@ namespace PosTech.PortFolio.Repository.Sql.Interface
     public interface ITransacaoRepository : IRepository<TransacaoEntity>
     {
         public IEnumerable<TransacaoEntity> ConsultarPorPortFolio(string portFolioId);
+        public IEnumerable<TransacaoEntity> ConsultarPorAtivoEPortFolio(string ativoId, string portFolioId);
     }
 }

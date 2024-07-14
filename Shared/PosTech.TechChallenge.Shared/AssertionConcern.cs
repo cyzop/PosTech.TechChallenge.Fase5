@@ -21,7 +21,7 @@ namespace PosTech.TechChallenge.Shared
             if (stringValue.Length < minLength || stringValue.Length > maxLength) { throw new ArgumentException(message); }
         }
 
-        public static void AssertArgumentMinValue(int numValue, int minLength, string message)
+        public static void AssertArgumentMinValue(int minLength, int numValue, string message)
         {
             if (numValue < minLength) { throw new ArgumentException(message); }
         }

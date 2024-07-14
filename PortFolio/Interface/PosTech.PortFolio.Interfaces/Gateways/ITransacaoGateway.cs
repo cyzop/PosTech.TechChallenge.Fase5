@@ -9,6 +9,8 @@ namespace PosTech.PortFolio.Interfaces.Gateways
 
         List<TransacaoEntity> ObterPorPortFolio(string portFolioId);
 
+        List<TransacaoEntity> ObterPorAtivoePortFolio(string ativoId, string portFolioId);
+
         List<TransacaoEntity> ObterPorPeriodo(DateTime datainicio, DateTime datafim);
 
         List<TransacaoEntity> ObterTodos();

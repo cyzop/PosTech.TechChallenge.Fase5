@@ -22,6 +22,7 @@ namespace PosTech.PortFolio.Adapter
                     Nome = entity.Ativo.Nome,
                     Quantidade = entity.Quantidade,
                     Preco = entity.Preco,
+                    Tipo = entity.Ativo.Tipo.ToString()
                 }
             };
         }

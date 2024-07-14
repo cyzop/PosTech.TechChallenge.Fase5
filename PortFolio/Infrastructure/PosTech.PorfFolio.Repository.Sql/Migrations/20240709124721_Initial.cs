@@ -68,7 +68,6 @@ namespace PosTech.PortFolio.Repository.Sql.Migrations
                     Id = table.Column<string>(type: "varchar(100)", nullable: false),
                     PortFolioId = table.Column<string>(type: "varchar(100)", nullable: false),
                     AtivoId = table.Column<string>(type: "varchar(100)", nullable: false),
-                    PorfFolioId = table.Column<string>(type: "VARCHAR(100)", nullable: false),
                     TipoTransacao = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<int>(type: "INT", nullable: false),
                     Preco = table.Column<decimal>(type: "DECIMAL(18,2)", nullable: false),

@@ -63,8 +63,15 @@ namespace PosTech.PortFolio.Controllers
             //ativo por codigo
             var ativo = _ativosGateway.ObterPorCodigo(ativoDao.Codigo);
 
+            //negociacoes do ativo 
+            var carteira = _transacaoGateway.ObterPorAtivoePortFolio(ativo.Id, portFolio.Id);
+
+            //Contabilizar carteira do ativo
+            ContabilizarAtivoInvestimentoUseCase contabilizarAtivo = new ContabilizarAtivoInvestimentoUseCase(carteira);
+            var saldoAtivoNegociado = contabilizarAtivo.CalcularQuantidade(ativo);
+
             //transacao use case
-            RegistrarTransacaoVendaUseCase registroTransacao = new RegistrarTransacaoVendaUseCase(portFolio, ativo, ativoDao.Quantidade, ativoDao.Preco);
+            RegistrarTransacaoVendaUseCase registroTransacao = new RegistrarTransacaoVendaUseCase(portFolio, ativo, ativoDao.Quantidade, ativoDao.Preco, saldoAtivoNegociado);
             var transacao = registroTransacao.FinalizarTransacao();
 
             //transacao gateway (registrar a transacao)

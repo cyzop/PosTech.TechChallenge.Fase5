@@ -13,6 +13,11 @@ namespace PosTech.PortFolio.Gateways
             _database = database;
         }
 
+        public List<TransacaoEntity> ObterPorAtivoePortFolio(string ativoId, string portFolioId)
+        {
+            return _database.ConsultarPorAtivoEPortFolio(ativoId, portFolioId)?.ToList();
+        }
+
         public TransacaoEntity ObterPorId(string id) => _database.ConsultarPorId(id);
 
         public List<TransacaoEntity> ObterPorPeriodo(DateTime datainicio, DateTime datafim)

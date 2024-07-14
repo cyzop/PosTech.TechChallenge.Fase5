@@ -51,7 +51,7 @@ namespace PosTech.PortFolio.Api.Controllers
                 catch (Exception ex)
                 {
                     _logger.LogError(ex.Message, ex);
-                    return BadRequest(ex);
+                    return BadRequest(ex.Message);
                 }
             }
             else
@@ -67,8 +67,8 @@ namespace PosTech.PortFolio.Api.Controllers
         }
 
         [HttpPost("Vender")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TransacaoDao))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+       // [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TransacaoDao))]
+       // [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostTransacaoVender(TransacaoModel transacao)
         {
             if (ModelState.IsValid)
@@ -98,7 +98,7 @@ namespace PosTech.PortFolio.Api.Controllers
                 catch (Exception ex)
                 {
                     _logger.LogError(ex.Message, ex);
-                    return BadRequest(ex);
+                    return BadRequest(ex.Message);
                 }
             }
             else
@@ -133,7 +133,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -157,11 +157,11 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
-        [HttpGet("/{transacaoId}")]
+        [HttpGet("{transacaoId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TransacaoDao))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ListarPorId(string transacaoId)
@@ -178,7 +178,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

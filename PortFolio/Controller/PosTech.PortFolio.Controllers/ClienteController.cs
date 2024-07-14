@@ -95,7 +95,7 @@ namespace PosTech.PortFolio.Controllers
 
         public UsuarioDao ObterUsuarioPorId(string id)
         {
-            var usuarioBase = _usuarioGateway.ObterPorEmail(id);
+            var usuarioBase = _usuarioGateway.ObterPorId(id);
             return new UsuarioDao(usuarioBase.Id, usuarioBase.Nome, usuarioBase.Email);
         }
 

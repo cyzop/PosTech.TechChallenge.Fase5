@@ -19,7 +19,7 @@ namespace PosTech.PortFolio.Api.Controllers
             _controller = controller;
         }
 
-        [HttpGet("/{portfolioId}")]
+        [HttpGet("{portfolioId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PortFolioDao))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetPortFolioPorId(string portfolioId)
@@ -38,7 +38,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -69,7 +69,7 @@ namespace PosTech.PortFolio.Api.Controllers
                 catch (Exception ex)
                 {
                     _logger.LogError(ex.Message, ex);
-                    return BadRequest(ex);
+                    return BadRequest(ex.Message);
                 }
             }
             else
@@ -104,7 +104,7 @@ namespace PosTech.PortFolio.Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
 
         }

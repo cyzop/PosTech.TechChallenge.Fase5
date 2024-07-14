@@ -34,6 +34,9 @@ namespace PosTech.PortFolio.Api.Extensions
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IUsuarioGateway, UsuarioGateway>();
 
+            //Mercado Financeiro
+            services.AddScoped<IMercadoFinanceiroController, MercadoFinanceiroController>();
+            services.AddScoped<IMercadoFinanceiroGateway, MercadoFinanceiroGateway>();  
 
             return services;
         }

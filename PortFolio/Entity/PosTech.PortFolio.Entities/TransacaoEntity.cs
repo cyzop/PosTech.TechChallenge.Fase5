@@ -33,8 +33,8 @@ namespace PosTech.PortFolio.Entities
         {
             AssertionConcern.AssertArgumentMinValue(0, Quantidade, Messages.Ativo.ValidationMessages.MensagemQuantidadeAtivosInvalida);
             AssertionConcern.AssertDoublePositiveValue(Preco, Messages.Ativo.ValidationMessages.MensagemValorAtivoInvalido);
-            AssertionConcern.AssertArgumentIsNull(Ativo, Messages.Transacao.ValidationMessages.MensagemAtivoVazio);
-            AssertionConcern.AssertArgumentIsNull(PortFolio, Messages.Transacao.ValidationMessages.MensagemPortFolioVazio);
+            AssertionConcern.AssertArgumentNotNull(Ativo, Messages.Transacao.ValidationMessages.MensagemAtivoVazio);
+            AssertionConcern.AssertArgumentNotNull(PortFolio, Messages.Transacao.ValidationMessages.MensagemPortFolioVazio);
         }
     }
 }

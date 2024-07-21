@@ -1,16 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using NuGet.Frameworks;
 using PosTech.PortFolio.Api.Controllers;
-using PosTech.PortFolio.Api.Tests.fixttures;
 using PosTech.PortFolio.Api.Tests.fixtures;
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 using PosTech.PortFolio.Interfaces.Controller;
 using PosTech.PortFolio.Interfaces.Gateways;
 
-namespace PosTech.PortFolio.Api.Tests
+namespace PosTech.PortFolio.Tests.API
 {
     [Collection(nameof(AtivoTestFixtureCollection))]
     public class AtivoControllerApiTest
@@ -30,8 +28,8 @@ namespace PosTech.PortFolio.Api.Tests
         }
 
 
-        [Fact(DisplayName ="Teste unitario de validacao de ativo")]
-        [Trait("Api.AtivoController","Teste unitario de validacao de listagem de ativos")]
+        [Fact(DisplayName = "Teste unitario de validacao de ativo")]
+        [Trait("Api.AtivoController", "Teste unitario de validacao de listagem de ativos")]
         public async void Get_ReturnsOkResultWithData()
         {
             var ativos = new List<AtivoDao> {

@@ -21,7 +21,7 @@ namespace PosTech.PortFolio.Entities
 
         public void Validate()
         {
-            AssertionConcern.AssertArgumentIsNull(Cliente, Messages.PortFolio.ValidationMessages.MensagemClienteVazio);
+            AssertionConcern.AssertArgumentNotNull(Cliente, Messages.PortFolio.ValidationMessages.MensagemClienteVazio);
             AssertionConcern.AssertArgumentNotEmpty(Nome, Messages.PortFolio.ValidationMessages.MensagemNomeVazio);
         }
     }

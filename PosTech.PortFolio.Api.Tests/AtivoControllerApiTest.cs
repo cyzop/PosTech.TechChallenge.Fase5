@@ -30,8 +30,8 @@ namespace PosTech.PortFolio.Api.Tests
         }
 
 
-        [Fact(DisplayName ="Teste unitário de validação de ativo")]
-        [Trait("ApiAtivoController","Teste unitário de validação de listagem de ativos")]
+        [Fact(DisplayName ="Teste unitario de validacao de ativo")]
+        [Trait("Api.AtivoController","Teste unitario de validacao de listagem de ativos")]
         public async void Get_ReturnsOkResultWithData()
         {
             var ativos = new List<AtivoDao> {

@@ -15,7 +15,7 @@ namespace PosTech.PortFolio.Gateways
         }
 
         public List<CotacaoAtivoEntity> GetCotacoes(List<AtivoEntity> ativos)
-            => ativos.Select(a => new CotacaoAtivoEntity(a.Tipo, a.Codigo, a.Nome, GenerateRandomPrice(), DateTime.Now)).ToList();
+            => ativos.Select(a => new CotacaoAtivoEntity(a.Tipo, a.Codigo, a.Nome, GenerateRandomPrice(), DateTime.Now, a.Id, a.DataCriacao)).ToList();
 
         private double GenerateRandomPrice()
         {

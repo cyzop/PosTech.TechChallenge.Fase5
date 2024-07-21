@@ -1,7 +1,8 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
+using System;
 
-namespace PosTech.TechChallenge.Shared
+namespace PosTech.PortFolio.Assertion
 {
     public class AssertionConcern
     {
@@ -12,7 +13,7 @@ namespace PosTech.TechChallenge.Shared
 
         public static void AssertArgumentNotNull(object objectData, string message)
         {
-            if(objectData == null) {  throw new ArgumentException(message);}
+            if (objectData == null) { throw new ArgumentException(message); }
         }
 
         public static void AssertArgumentLength(string stringValue, int minLength, int maxLength, string message)
@@ -32,7 +33,7 @@ namespace PosTech.TechChallenge.Shared
         }
         public static void AssertArgumentDate(DateTime dateValue, DateTime minDate, DateTime maxData, string message)
         {
-            if(dateValue <  minDate || dateValue > maxData) { throw new ArgumentException(message); }
+            if (dateValue < minDate || dateValue > maxData) { throw new ArgumentException(message); }
         }
 
         public static void AssertArgumentEmailIsValid(string email, string message)
@@ -78,7 +79,7 @@ namespace PosTech.TechChallenge.Shared
 
         public static void AssetArgumentNotEquals(string baseValue, string value, string message)
         {
-            if((bool)baseValue?.Equals(value, StringComparison.InvariantCultureIgnoreCase))
+            if ((bool)baseValue?.Equals(value, StringComparison.InvariantCultureIgnoreCase))
                 throw new ArgumentException(message);
         }
     }

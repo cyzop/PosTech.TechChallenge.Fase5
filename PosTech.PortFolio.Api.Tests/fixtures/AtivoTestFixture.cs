@@ -26,13 +26,15 @@ namespace PosTech.PortFolio.Api.Tests.fixttures
 
         public AtivoEntity GerarAtivoEntity()
         {
-            var identificador = _faker.Finance.Bic();
+            var codigo = _faker.Finance.Bic();
             var nome = _faker.Finance.AccountName();
             var tipoNumero = _faker.Random.Number(2);
-            
+            var id = Guid.NewGuid().ToString();
+            var data = _faker.Date.Recent(10, DateTime.Now);
+
             TipoAtivo enumTipo = (TipoAtivo)tipoNumero;
 
-            return new AtivoEntity(enumTipo, nome, identificador);
+            return new AtivoEntity(enumTipo, nome, codigo, id, data);
         }
     }
 }

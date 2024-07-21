@@ -19,26 +19,13 @@ namespace PosTech.PortFolio.UseCases.Transacao
             _quantidadeAtivos = quantidade;
             _valorUnitario = preco;
 
-            Transacao = new TransacaoEntity()
-            {
-                Id = Guid.NewGuid().ToString(),
-                TipoTransacao = TipoTransacao.Compra,
-                Ativo = ativo,
-                AtivoId = ativo.Id,
-                DataCriacao = DateTime.Now,
-                PortFolio = portFolio,
-                PortFolioId = portFolio.Id
-            };
+            Transacao = new TransacaoEntity(portFolio, ativo, TipoTransacao.Compra, quantidade, preco, Guid.NewGuid().ToString(), DateTime.Now);
         }
 
         public TransacaoEntity FinalizarTransacao()
         {
             AssertionConcern.AssertArgumentMinValue(1, _quantidadeAtivos, Messages.Ativo.ValidationMessages.MensagemQuantidadeAtivosInvalida);
-            Transacao.SetQuantidade(_quantidadeAtivos);
-
             AssertionConcern.AssertDoublePositiveValue(_valorUnitario, Messages.Ativo.ValidationMessages.MensagemValorAtivoInvalido);
-            Transacao.SetPreco(_valorUnitario);
-
             return Transacao;
         }
     }

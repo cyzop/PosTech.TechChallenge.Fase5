@@ -17,15 +17,15 @@ namespace PosTech.PortFolio.Controllers
 
         public UsuarioDao AtualizarUsuario(NovoUsuarioDao usuario)
         {
-            var usuarioEntity = new ClienteEntity()
+            var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
+
+            var usuarioEntity = new ClienteEntity(usuario.Nome, usuario.Email, usuario.Senha, usuario.Id, usuarioBase.DataCriacao)
             {
                 Id = usuario.Id,
                 Nome = usuario.Nome,
                 Email = usuario.Email,
                 Senha = usuario.Senha
             };
-
-            var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
 
             var registroPaciente = new RegistrarUsuarioUseCase(usuarioEntity, usuarioBase);
             //RN verifica se ainda não existe email cadastrado
@@ -51,13 +51,7 @@ namespace PosTech.PortFolio.Controllers
 
         public UsuarioDao IncluirUsuario(NovoUsuarioDao usuario)
         {
-            var usuarioEntity = new ClienteEntity()
-            {
-                Id = usuario.Id,
-                Nome = usuario.Nome,
-                Email = usuario.Email,
-                Senha = usuario.Senha
-            };
+            var usuarioEntity = new ClienteEntity(usuario.Nome, usuario.Email, usuario.Senha, usuario.Id, DateTime.Now);
 
             var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
             

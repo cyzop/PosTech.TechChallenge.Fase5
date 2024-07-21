@@ -38,14 +38,7 @@ namespace PosTech.PortFolio.Controllers
             var cliente = _usuarioGateway.ObterPorId(portFolioDao.UsuarioDao.Id);
             var portFoliosUsuario = _gateway.ObterPorUsuario(portFolioDao.UsuarioDao.Id);
 
-            var novoPortFolio = new PortFolioEntity()
-            {
-                Nome = portFolioDao.Nome,
-                Cliente = cliente,
-                ClienteId = portFolioDao.UsuarioDao.Id,
-                Descricao = portFolioDao.Descricao,
-                DataCriacao = DateTime.Now,
-            };
+            var novoPortFolio = new PortFolioEntity(cliente, portFolioDao.Nome, portFolioDao.Descricao, Guid.NewGuid().ToString(), DateTime.Now);
 
             //PortFolio use case
             RegistrarPortFolioUseCase registroPortFolio = new RegistrarPortFolioUseCase(novoPortFolio, portFoliosUsuario);

@@ -4,5 +4,11 @@ namespace PosTech.PortFolio.Entities
     {
         public string Id { get; set; }
         public DateTime DataCriacao { get; set; }
+
+        protected EntityBase(string id, DateTime dataCriacao)
+        {
+            Id = id;
+            DataCriacao = dataCriacao;
+        }
     }
 }

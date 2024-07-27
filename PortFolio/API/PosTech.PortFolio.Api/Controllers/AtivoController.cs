@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Interfaces.Controller;
 
@@ -10,6 +11,7 @@ namespace PosTech.PortFolio.Api.Controllers
     {
         private readonly ILogger<AtivoController> _logger;
         private readonly IAtivoController _controller;
+        
 
         public AtivoController(ILogger<AtivoController> logger, IAtivoController controller)
         {

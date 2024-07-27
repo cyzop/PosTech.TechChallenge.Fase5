@@ -22,15 +22,26 @@ namespace PosTech.PortFolio.Controllers
 
         public IEnumerable<TransacaoDao> ListarPorPortFolio(string portfolioId)
         {
-            return _transacaoGateway
-                .ObterPorPortFolio(portfolioId)?
-                .Select(t => TransacaoDaoAdapter.GetDaoFromEntity(t));
+            var transacoes = _transacaoGateway.ObterPorPortFolio(portfolioId);
+
+            //listar use case
+            ListarTransacoesUseCase listarUseCase = new ListarTransacoesUseCase(transacoes);
+
+            var transacoesRetorno = listarUseCase.Listar();
+
+            return transacoesRetorno.Select(t => TransacaoDaoAdapter.GetDaoFromEntity(t));
         }
 
         public IEnumerable<TransacaoDao> ListarTodos()
         {
-            return _transacaoGateway
-                .ObterTodos()?
+            var transacoes = _transacaoGateway.ObterTodos();
+
+            //listar use case
+            ListarTransacoesUseCase listarUseCase = new ListarTransacoesUseCase(transacoes);
+
+            var transacoesRetorno = listarUseCase.Listar();
+
+            return transacoesRetorno
                 .Select(t => TransacaoDaoAdapter.GetDaoFromEntity(t));
         }
 
@@ -68,7 +79,7 @@ namespace PosTech.PortFolio.Controllers
 
             //Contabilizar carteira do ativo
             ContabilizarAtivoInvestimentoUseCase contabilizarAtivo = new ContabilizarAtivoInvestimentoUseCase(carteira);
-            var saldoAtivoNegociado = contabilizarAtivo.CalcularQuantidade(ativo);
+            var saldoAtivoNegociado = contabilizarAtivo.CalcularQuantidadePorAtivo(ativo);
 
             //transacao use case
             RegistrarTransacaoVendaUseCase registroTransacao = new RegistrarTransacaoVendaUseCase(portFolio, ativo, ativoDao.Quantidade, ativoDao.Preco, saldoAtivoNegociado);

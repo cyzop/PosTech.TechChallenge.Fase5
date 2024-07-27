@@ -1,0 +1,57 @@
+﻿@using PosTech.PortFolioWeb.Client.Pages.Example.Model
+@using PosTech.PortFolioWeb.Client.Pages.Example.Services
+
+@inject EntidadeService EntidadeService
+@inject IJSRuntime JSRuntime;
+
+<PageTitle>Listar entidades</PageTitle>
+<h3>CrudListar</h3>
+
+<a href="/crudedit" class="btn btn-success">Criar</a>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th> Id</th>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (entidades != null)
+    {
+        foreach(var item in entidades)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nome</td>
+                <td>
+                    <a href="/crudedit/@item.Id" class="btn btn-warning">Alterar</a>
+                    <button class="btn btn-danger" @onclick="async () => await Delete(item.Id)">Delete</button>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+@code {
+    List<Entidade> entidades = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        entidades = await EntidadeService.GetAll();
+    }
+
+    async Task Delete(string id)
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Tem certeza que deseja deletar?");
+        if (confirmed is false)
+            return;
+
+        var entidade = await EntidadeService.GetById(id);
+        await EntidadeService.Remove(entidade);
+        entidades = await EntidadeService.GetAll();
+
+        StateHasChanged();//chamar ao final do salvar
+    }
+}

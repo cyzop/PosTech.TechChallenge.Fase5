@@ -8,6 +8,8 @@ namespace PosTech.PortFolio.Entities
         public string Nome { get; set; }
         public string Codigo { get; set; }
 
+        public AtivoEntity():base(){}
+
         public AtivoEntity(TipoAtivo tipo, string nome, string codigo, string id, DateTime data) : base(id, data)
         {
             Tipo = tipo;

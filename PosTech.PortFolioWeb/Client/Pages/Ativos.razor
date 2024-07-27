@@ -1,0 +1,56 @@
+﻿@page "/Ativos"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+
+<PageTitle>Ativos</PageTitle>
+
+<h3>Ativos</h3>
+
+@if (ativos == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ativo in ativos)
+            {
+                <tr>
+                    <td>@ativo.Codigo</td>
+                    <td>@ativo.Nome</td>
+                    <td>@ativo.Tipo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private AtivoDao[]? ativos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            ativos = await Http.GetFromJsonAsync<AtivoDao[]>("Ativo");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+
+     
+}

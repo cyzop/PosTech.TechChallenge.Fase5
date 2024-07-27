@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.19" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cliente\Presenter\PosTech.Cliente.DAO\PosTech.Cliente.DAO.csproj" />
+    <ProjectReference Include="..\PortFolio\Controller\PosTech.PortFolio.Controllers\PosTech.PortFolio.Controllers.csproj" />
+    <ProjectReference Include="..\PortFolio\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
+    <ProjectReference Include="..\PortFolio\Infrastructure\PosTech.PorfFolio.Repository.Sql\PosTech.PortFolio.Repository.Sql.csproj" />
+    <ProjectReference Include="..\PortFolio\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

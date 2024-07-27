@@ -5,6 +5,7 @@
         public AtivoEntity Ativo { get; private set; }
         public int Quantidade { get; private set; }
 
+        public InvestimentoEntity() { }
         public InvestimentoEntity(AtivoEntity ativo, int quantidade)
         {
             Ativo = ativo;

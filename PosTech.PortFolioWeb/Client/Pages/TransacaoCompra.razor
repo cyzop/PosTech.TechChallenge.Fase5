@@ -1,0 +1,136 @@
+﻿
+@page "/transacaocompra/{id}/{nome}"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@using System.Globalization
+@using System.ComponentModel.DataAnnotations
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime;
+
+<h3>Portfolio @Nome - Nova Compra</h3>
+
+@if (ativos == null)
+{
+    <p><em>Loading...</em></p>
+    <button class="btn btn-secondary" @onclick="Voltar">Cancelar</button>
+}
+else
+{
+    <EditForm Model="negociacao" OnValidSubmit="PostEntidade">
+        @if(ativos != null)
+        {
+            <div class="form-group mb-3">
+                <label for="ativocode">Ativo</label>
+                <select value="@negociacao.AtivoId" @onchange="OnChangeAtivo" class="form-control">
+                    <option value=""></option>
+                    @foreach (var item in ativos)
+                    {
+                        <option value="@item.Codigo">@item.Nome - @FormataValor(item.Preco)</option>
+                    }
+                </select>
+            </div>
+             <div class="form-group mb-3">
+                <label for="quantidade">Quantidade</label>
+                <input type="number" class="form-control" id="quantidade" @onchange="OnChangeQuantidade" value="@Quantidade" />
+             </div>
+             <div class="form-group mb-3">
+                <label for="preco">Valor do Ativo</label>
+                <InputNumber disabled class="form-control" id="preco" @bind-Value="negociacao.Preco" />
+             </div>
+            <p>Valor Total: @TotalTransacao</p>
+        }
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <button class="btn btn-success" type="submit">Confirmar</button>
+        <button class="btn btn-secondary" @onclick="Voltar">Cancelar</button>
+    </EditForm>
+}
+
+
+@code {
+    [Parameter] public string Id { get; set; }
+    [Parameter] public string Nome { get; set; }
+    private CotacaoAtivoDao[]? ativos;
+    private NegociacaoAtivoDao negociacao = new();
+    private string Valor { get; set; } = "";
+    private string Quantidade { get; set; } = "0";
+    private string TotalTransacao { get; set; } = "0";
+
+    private void Voltar()
+    {
+        NavigationManager.NavigateTo($"/transacoes/{Id}/{Nome}");
+    }
+
+    private void OnChangeAtivo(ChangeEventArgs args)
+    {
+        if (args.Value != null)
+        {
+            negociacao.AtivoId = args.Value.ToString();
+            var cotacao = ativos.FirstOrDefault(c => c.Codigo == args.Value.ToString());
+            Valor = cotacao.Preco.ToString();
+            negociacao.Preco = cotacao.Preco;
+
+            TotalizaTransacao();
+        }
+    }
+
+    private void OnChangeQuantidade(ChangeEventArgs args) {
+        if (args.Value != null)
+        {
+            negociacao.Quantidade = int.Parse(args.Value.ToString());
+            TotalizaTransacao();
+        }
+    }
+
+    private void TotalizaTransacao(){
+        var total = negociacao.Quantidade * negociacao.Preco;
+        TotalTransacao = FormataValor(total);
+    }
+
+    protected string FormataValor(double valor)
+    {
+        return string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            negociacao.PortFolioId = Id;
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                var url = $"Investimento";
+                ativos = await Http.GetFromJsonAsync<CotacaoAtivoDao[]>(url);
+            }
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception ex)
+        {
+            JSRuntime.InvokeAsync<bool>("prompt", $"Erro {ex.Message}");
+        }
+    }
+
+    async Task PostEntidade()
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Confirma a realização esta transação no valor de {TotalTransacao} para compra de novos ativos ?");
+        if (confirmed is false)
+            return;
+
+        var response = await Http.PostAsJsonAsync("Transacao/Comprar", negociacao);
+        if (response.IsSuccessStatusCode)
+            Voltar();
+        else
+            JSRuntime.InvokeAsync<bool>("alert", $"Falha na operação {response.StatusCode}");
+    }
+}

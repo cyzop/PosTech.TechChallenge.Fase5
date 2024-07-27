@@ -1,0 +1,24 @@
+﻿@page "/Ativos"
+@using PortFolio.Web.Response
+@inject AtivosAPI ativosAPI
+
+<PageTitle>Ativos</PageTitle>
+
+<h3>Ativos</h3>
+
+@if(ativos is not null)
+{
+    foreach(var item in ativos)
+    {
+        <p>@item.Nome</p>
+    }
+}
+
+@code {
+    private ICollection<AtivoDao>? ativos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ativos = await ativosAPI.GetAtivosAsync();
+    }
+}

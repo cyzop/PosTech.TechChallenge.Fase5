@@ -6,6 +6,8 @@
         public string Nome { get; set; }
         public string? Descricao { get; set; }
 
-        public UsuarioDao UsuarioDao { get; set; }
+        public DateTime DataCriacao { get; set; }
+
+        public UsuarioDao Usuario { get; set; }
     }
 }

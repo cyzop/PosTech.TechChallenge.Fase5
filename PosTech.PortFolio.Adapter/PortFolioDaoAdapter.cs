@@ -14,8 +14,9 @@ namespace PosTech.PortFolio.Adapter
             {
                 Id = entity.Id,
                 Nome = entity.Nome,
-                UsuarioDao = ClienteDaoAdapter.GetDaoFromEntity(entity.Cliente),
-                Descricao = entity.Descricao
+                Usuario = ClienteDaoAdapter.GetDaoFromEntity(entity.Cliente),
+                Descricao = entity.Descricao,
+                DataCriacao = entity.DataCriacao,
             };
         }
     }

@@ -1,0 +1,53 @@
+﻿@page "/portfolioDetail/{id}/{name}"
+
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<PageTitle>PortFolio</PageTitle>
+
+<h3>PortFolio @Name</h3>
+
+
+@if (portfolio == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var portFolio in portfolio)
+            {
+                <tr>
+                    <td>
+                            @portFolio.Nome
+                    </td>
+                    <td>@portFolio.Descricao</td>
+                    <td>@portFolio.DataCriacao.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    [Parameter] 
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Name { get; set; }
+
+    private PortFolioDao[]? portfolio;
+}

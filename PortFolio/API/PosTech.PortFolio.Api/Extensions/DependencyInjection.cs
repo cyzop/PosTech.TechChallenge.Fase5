@@ -36,7 +36,10 @@ namespace PosTech.PortFolio.Api.Extensions
 
             //Mercado Financeiro
             services.AddScoped<IMercadoFinanceiroController, MercadoFinanceiroController>();
-            services.AddScoped<IMercadoFinanceiroGateway, MercadoFinanceiroGateway>();  
+            services.AddScoped<IMercadoFinanceiroGateway, MercadoFinanceiroGateway>();
+
+            //Investimentos
+            services.AddScoped<IInvestimentoController, InvestimentoController>();
 
             return services;
         }

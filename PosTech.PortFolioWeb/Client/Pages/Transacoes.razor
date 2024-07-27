@@ -1,0 +1,106 @@
+﻿@page "/transacoes/{Id}/{Nome}"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@using System.Globalization
+@attribute [Authorize]
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+
+<PageTitle>Transações</PageTitle>
+
+<h3>PortFólio: @Nome - Transações</h3>
+
+<p>
+    <button class="btn btn-info" @onclick="ComprarAtivo">Comprar Ativo</button>
+    <button class="btn btn-danger" @onclick="VenderAtivo">Vender Ativo</button>
+</p>
+
+@if (transacoes == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Operação</th>
+                <th>Ativo</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Data</th>
+                <td>Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transacao in transacoes)
+            {
+                <tr>
+                    <td>@transacao.TipoTransacao</td>
+                    <td>@transacao.AtivoTransacao.Nome</td>
+                    <td>@transacao.AtivoTransacao.Quantidade</td>
+                    <td>@FormataValor(transacao.AtivoTransacao.Preco)</td>
+                    <td>@transacao.DataTransacao.ToString("dd/MM/yyyy")</td>
+                    <td>@FormataValor(CalculaTotal(transacao.AtivoTransacao.Quantidade,transacao.AtivoTransacao.Preco))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button class="btn btn-secondary" @onclick="Voltar">Voltar</button>
+}
+
+
+@code {
+    [Parameter] public string? Id { get; set; }
+    [Parameter] public string? Nome { get; set; }
+
+    private TransacaoDao[]? transacoes;
+
+    protected string FormataValor(double valor)
+    {
+        return string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+    }
+
+    protected double CalculaTotal(int quantidade, double preco)
+    {
+        return quantidade * preco;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                var url = $"Transacao/{Id}";
+                transacoes = await Http.GetFromJsonAsync<TransacaoDao[]>(url);
+            }
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch(Exception ex)
+        {
+            var x = ex.Message;
+        }
+    }
+    private void Voltar()
+    {
+        NavigationManager.NavigateTo("/portfolios");
+    }
+
+    private void ComprarAtivo()
+    {
+        NavigationManager.NavigateTo($"/transacaocompra/{Id}/{Nome}");
+    }
+    private void VenderAtivo()
+    {
+        NavigationManager.NavigateTo($"/transacaovenda/{Id}/{Nome}");
+    }
+}

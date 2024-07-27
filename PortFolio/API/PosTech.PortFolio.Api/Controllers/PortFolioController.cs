@@ -56,7 +56,7 @@ namespace PosTech.PortFolio.Api.Controllers
                     {
                         Nome = portFolio.Nome,
                         Descricao = portFolio.Descricao,
-                        UsuarioDao = new UsuarioDao(portFolio.ClienteId)
+                        Usuario = new UsuarioDao(portFolio.ClienteId)
                     };
 
                     var registro = _controller.RegistrarPortFolio(dao);
@@ -85,16 +85,16 @@ namespace PosTech.PortFolio.Api.Controllers
         }
 
 
-        [HttpGet("PortFoliosUsuario/{usuarioId}")]
+        [HttpGet("PortFoliosUsuario/{userMail}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerator<PortFolioDao>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetPorUsuarioId(string usuarioId)
+        public async Task<IActionResult> GetPorUsuarioId(string userMail)
         {
             //incluir um portfolio para o usuário
             try
             {
-                _logger.LogInformation($"PortFoliosUsuario {usuarioId}");
-                var registros = _controller.ListarPorUsuario(usuarioId);
+                _logger.LogInformation($"PortFoliosUsuario {userMail}");
+                var registros = _controller.ListarPorUsuario(userMail);
 
                 if (registros?.Count() > 0)
                     return Ok(registros);

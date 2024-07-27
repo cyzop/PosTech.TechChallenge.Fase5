@@ -18,9 +18,14 @@ namespace PosTech.PortFolio.Controllers
             _usuarioGateway = usuarioGateway;
         }
 
-        public IEnumerable<PortFolioDao> ListarPorUsuario(string usuarioId)
+        public IEnumerable<PortFolioDao> ListarPorUsuario(string userMail)
         {
-            return _gateway.ObterPorUsuario(usuarioId)?.Select(e => PortFolioDaoAdapter.GetDaoFromEntity(e));
+            var usuario = _usuarioGateway.ObterPorEmail(userMail);
+            
+            if (usuario == null)
+                return null;
+
+            return _gateway.ObterPorUsuario(usuario.Id)?.Select(e => PortFolioDaoAdapter.GetDaoFromEntity(e));
         }
 
         public IEnumerable<PortFolioDao> ListarTodos()
@@ -35,8 +40,8 @@ namespace PosTech.PortFolio.Controllers
 
         public PortFolioDao RegistrarPortFolio(PortFolioDao portFolioDao)
         {
-            var cliente = _usuarioGateway.ObterPorId(portFolioDao.UsuarioDao.Id);
-            var portFoliosUsuario = _gateway.ObterPorUsuario(portFolioDao.UsuarioDao.Id);
+            var cliente = _usuarioGateway.ObterPorId(portFolioDao.Usuario.Id);
+            var portFoliosUsuario = _gateway.ObterPorUsuario(portFolioDao.Usuario.Id);
 
             var novoPortFolio = new PortFolioEntity(cliente, portFolioDao.Nome, portFolioDao.Descricao, Guid.NewGuid().ToString(), DateTime.Now);
 

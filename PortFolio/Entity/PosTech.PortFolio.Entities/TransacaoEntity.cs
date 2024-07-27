@@ -15,6 +15,7 @@ namespace PosTech.PortFolio.Entities
         public void SetQuantidade(int quantidade) => Quantidade = quantidade;
         public void SetPreco(double preco) => Preco = preco;
 
+        public TransacaoEntity() { }
         public TransacaoEntity(PortFolioEntity portFolio, AtivoEntity ativo, TipoTransacao tipoTransacao, int quantidade, double preco, string id, DateTime data)
             : base(id, data)
         {

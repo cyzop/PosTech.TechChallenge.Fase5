@@ -1,0 +1,93 @@
+﻿@page "/PortFolios"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<PageTitle>PortFolios</PageTitle>
+
+<h3>Portfolios</h3>
+
+@if (portfolios == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var portFolio in portfolios)
+            {
+                
+                <tr>
+                    <td>
+                        @portFolio.Nome
+                    </td>
+                    <td>@portFolio.Descricao</td>
+                    <td>@portFolio.DataCriacao.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a href="@GetLinkTransacaoes(portFolio.Id, portFolio.Nome)" class="btn btn-warning">Transações</a>
+                        <a href="@GetLinkComprar(portFolio.Id, portFolio.Nome)" class="btn btn-info">Comprar</a>
+                        <a href="@GetLinkVender(portFolio.Id, portFolio.Nome)" class="btn btn-danger">Vender</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private PortFolioDao[]? portfolios;
+    private string userName;
+
+    private string GetLinkTransacaoes(string id, string nome)
+    {
+        return id != null ? $"/transacoes/{id}/{nome}" : "#";
+    }
+
+    private string GetLinkComprar(string id, string nome)
+    {
+        return id != null ? $"/transacaocompra/{id}/{nome}" : "#";
+    }
+    private string GetLinkVender(string id, string nome)
+    {
+        return id != null ? $"/transacaovenda/{id}/{nome}" : "#";
+    }
+
+    protected string GetValues(string id, string nome)
+    {
+        return string.Concat(id, "/", nome);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                userName = user.Identity.Name;
+                var url = $"PortFolio/PortfoliosUsuario/{userName}";
+                portfolios = await Http.GetFromJsonAsync<PortFolioDao[]>(url);
+            }
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+
+
+}

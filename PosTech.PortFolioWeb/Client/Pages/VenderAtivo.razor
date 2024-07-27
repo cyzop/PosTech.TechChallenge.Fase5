@@ -1,0 +1,27 @@
+﻿@page "/venderativo/{Id}/{Nome}"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+
+<h3>Nova Transação</h3>
+
+<!-- operacao comprar ou vender -->
+<!-- combo de ativos -->
+<!-- quantidade -->
+<!-- preço do ativo -->
+<!-- saldo da carteira -->
+
+@code {
+    [Parameter] public string? Id { get; set; }
+    [Parameter] public string? Nome { get; set; }
+
+    private void Voltar()
+    {
+        NavigationManager.NavigateTo("/transacoes/{Id}/{Nome}");
+    }
+}

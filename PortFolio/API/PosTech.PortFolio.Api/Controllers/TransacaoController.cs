@@ -137,7 +137,7 @@ namespace PosTech.PortFolio.Api.Controllers
             }
         }
 
-        [HttpPost("Listar/{portFolioId}")]
+        [HttpGet("Listar/{portFolioId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TransacaoDao>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ListarPorPortFolio(string portFolioId)

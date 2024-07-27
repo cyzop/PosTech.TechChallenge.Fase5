@@ -1,0 +1,34 @@
+﻿@page "/crudcreate"
+@using PosTech.PortFolioWeb.Client.Pages.Example.Model
+@using PosTech.PortFolioWeb.Client.Pages.Example.Services
+
+@inject NavigationManager NavigationManager
+@inject EntidadeService EntidadeService
+
+<h3>Criar entidade</h3>
+
+<EditForm Model="entidade" OnValidSubmit="CreateEntidade">
+    <div class="form-group mb-3">
+        <label for="entidadeName" >Nome</label>
+        <InputText @bind-Value="entidade.Nome" class="form-control" id="entidadeName" />
+    </div>
+
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <button class="btn btn-success" type="submit">Salvar</button>
+
+</EditForm>
+
+@code {
+    Entidade entidade = new();
+
+    async Task CreateEntidade()
+    {
+        entidade.Id = Guid.NewGuid().ToString();
+
+        await EntidadeService.Add(entidade);
+
+        NavigationManager.NavigateTo("/");
+    }
+}

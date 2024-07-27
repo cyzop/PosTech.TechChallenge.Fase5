@@ -1,0 +1,39 @@
+﻿@page "/crudedit/{Id}"
+@using PosTech.PortFolioWeb.Client.Pages.Example.Model
+@using PosTech.PortFolioWeb.Client.Pages.Example.Services
+
+@inject NavigationManager NavigationManager
+@inject EntidadeService EntidadeService
+
+<h3>Atualizar entidade</h3>
+
+<EditForm Model="entidade" OnValidSubmit="UpdateEntidade">
+    <div class="form-group mb-3">
+        <label for="entidadeName">Nome</label>
+        <InputText @bind-Value="entidade.Nome" class="form-control" id="entidadeName" />
+    </div>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <button class="btn btn-success" type="submit">Salvar</button>
+
+</EditForm>
+
+@code {
+    Entidade entidade = new();
+
+    [Parameter] public string Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        entidade = await EntidadeService.GetById(Id);
+    }
+
+    async Task UpdateEntidade()
+    {
+        await EntidadeService.Update(entidade);
+
+        NavigationManager.NavigateTo("/");
+    }
+}

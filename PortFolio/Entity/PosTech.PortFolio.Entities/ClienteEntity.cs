@@ -9,6 +9,7 @@ namespace PosTech.PortFolio.Entities
 
         public string? Senha { get; set; }
 
+        public ClienteEntity() { }
         public ClienteEntity(string nome, string email, string? senha, string id, DateTime dataCriacao):base(id, dataCriacao)
         {
             Nome = nome;

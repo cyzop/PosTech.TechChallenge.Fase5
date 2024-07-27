@@ -9,6 +9,8 @@ namespace PosTech.PortFolio.Entities
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
+        public PortFolioEntity() { }    
+
         public PortFolioEntity(ClienteEntity cliente, string nome, string descricao, string id, DateTime data) : base (id, data)
         {
             ClienteId = cliente.Id;

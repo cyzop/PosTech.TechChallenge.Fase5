@@ -1,0 +1,93 @@
+﻿@page "/profile"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Client.Services
+@using PosTech.PortFolioWeb.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject UsuarioService UsuarioService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime;
+
+
+<PageTitle>Perfil do Usuário</PageTitle>
+
+<h3>Perfil do Usuário</h3>
+
+
+@if (cliente == null)
+{
+    <p><em>Loading...</em></p>
+    <button class="btn btn-secondary" @onclick="Voltar">Cancelar</button>
+}
+else
+{
+    <EditForm Model="cliente" OnValidSubmit="AtualizaEntidade">
+        <div class="form-group mb-3">
+            <label for="entidadeName">Nome</label>
+            <InputText @bind-Value="cliente.Nome" class="form-control" id="entidadeName" />
+        </div>
+        <div class="form-group mb-3">
+            <label for="entidadeEmail">Email</label>
+            <InputText @bind-Value="cliente.Email" MaxLength="150" class="form-control" id="entidadeEmail" readonly="readonly"/>
+        </div>
+        <div class="form-group mb-3">
+            <label for="entidadeData">Criado em</label>
+            <InputDate @bind-Value="cliente.DataCriacao" MaxLength="150" class="form-control" id="entidadeData" disabled="disabled" />
+        </div>
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+      
+        <button class="btn btn-success" type="submit">Salvar</button>
+        <button class="btn btn-secondary" @onclick="Voltar">Cancelar</button> 
+    </EditForm>
+}
+
+@code {
+    private ClienteDao cliente { get; set; }
+
+    private void Voltar()
+    {
+        NavigationManager.NavigateTo($"/");
+    }
+
+    async Task AtualizaEntidade()
+    {
+         bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Confirma alterar seu nome de usuário?");
+         if (confirmed is false)
+             return;
+
+        var response = await Http.PostAsJsonAsync("cliente", cliente);
+         if (response.IsSuccessStatusCode)
+             Voltar();
+         else
+            JSRuntime.InvokeAsync<bool>("alert", $"Falha na operação {response.StatusCode}");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                cliente = new();
+                cliente.Id = UsuarioService.Id;
+                cliente.Nome = UsuarioService.Nome;
+                cliente.DataCriacao = UsuarioService.DataCriacao;
+                cliente.Email = user.Identity.Name;
+            }
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception ex)
+        {
+            JSRuntime.InvokeAsync<bool>("alert", $"Erro {ex.Message}");
+        }
+    }
+}

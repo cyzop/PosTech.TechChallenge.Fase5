@@ -54,5 +54,29 @@ namespace PosTech.PortFolio.Controllers
 
             return PortFolioDaoAdapter.GetDaoFromEntity(portFolio);
         }
+
+        public PortFolioDao AtualizarPortFolio(PortFolioDao portFolioDao)
+        {
+            var portFoliosUsuario = _gateway.ObterPorUsuario(portFolioDao.Usuario.Id);
+            var portFolioDb = _gateway.ObterPorId(portFolioDao.Id);
+
+            var portFolioAtualizar = new PortFolioEntity(portFolioDb.Cliente, 
+                portFolioDao.Nome, 
+                portFolioDao.Descricao, 
+                portFolioDb.Id, 
+                portFolioDb.DataCriacao);
+
+            //PortFolio use case
+            AtualizarPortFolioUseCase registroPortFolio = new AtualizarPortFolioUseCase(portFolioAtualizar, portFoliosUsuario);
+            var portFolio = registroPortFolio.VerificarPortFolio();
+
+            portFolioDb.Nome = portFolioAtualizar.Nome;
+            portFolioDb.Descricao = portFolioAtualizar.Descricao;
+
+            //transacao gateway (registrar a transacao)
+            _gateway.AtualizarPortFolio(portFolioDb);
+
+            return PortFolioDaoAdapter.GetDaoFromEntity(portFolioAtualizar);
+        }
     }
 }

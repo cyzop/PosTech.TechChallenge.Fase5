@@ -9,5 +9,6 @@
         public DateTime DataCriacao { get; set; }
 
         public UsuarioDao Usuario { get; set; }
+
     }
 }

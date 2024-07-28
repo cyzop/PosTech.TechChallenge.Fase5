@@ -1,5 +1,4 @@
-﻿using PosTech.PortFolio.DAO;
-using PosTech.PortFolio.Entities;
+﻿using PosTech.PortFolio.Entities;
 
 namespace PosTech.PortFolio.Interfaces.Gateways
 {
@@ -9,5 +8,6 @@ namespace PosTech.PortFolio.Interfaces.Gateways
         IEnumerable<PortFolioEntity> ObterPorUsuario(string usuarioId);
         IEnumerable<PortFolioEntity> ObterTodos();
         void RegistrarPortFolio(PortFolioEntity portFolio);
+        PortFolioEntity AtualizarPortFolio(PortFolioEntity portFolio);
     }
 }

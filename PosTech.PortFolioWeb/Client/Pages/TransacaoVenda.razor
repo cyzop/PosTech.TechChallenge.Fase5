@@ -29,7 +29,9 @@ else
                     <option value=""></option>
                     @foreach (var item in ativosInvestido)
                     {
+                        @if(item.Quantidade > 0){
                         <option value="@item.Codigo">@item.Nome (@item.Quantidade)</option>
+                        }
                     }
                 </select>
             </div>

@@ -8,12 +8,14 @@
 @inject HttpClient Http
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime;
 
 <PageTitle>Transações</PageTitle>
 
 <h3>PortFólio: @Nome - Transações</h3>
 
 <p>
+    <button class="btn btn-secondary" @onclick="Voltar">Voltar</button>
     <button class="btn btn-info" @onclick="ComprarAtivo">Comprar Ativo</button>
     <button class="btn btn-danger" @onclick="VenderAtivo">Vender Ativo</button>
 </p>
@@ -49,7 +51,7 @@ else
             }
         </tbody>
     </table>
-    <button class="btn btn-secondary" @onclick="Voltar">Voltar</button>
+    
 }
 
 
@@ -87,7 +89,9 @@ else
         }
         catch(Exception ex)
         {
+            transacoes = new TransacaoDao[0];
             var x = ex.Message;
+            JSRuntime.InvokeAsync<bool>("promp", $"Falha na operação {x}");
         }
     }
     private void Voltar()

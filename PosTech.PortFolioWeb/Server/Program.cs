@@ -27,6 +27,8 @@ builder.Services.AddTransient<PortfoliosApi>();
 builder.Services.AddTransient<TransacaoAPI>();
 builder.Services.AddTransient<CotacaoAtivosAPI>();
 builder.Services.AddTransient<InvestimentoAPI>();
+builder.Services.AddTransient<ClienteAPI>();
+
 
 builder.Services.AddHttpClient("AtivoAPI", client =>
 {
@@ -53,8 +55,11 @@ builder.Services.AddHttpClient("InvestimentoAPI", client =>
     client.BaseAddress = new Uri(builder.Configuration["InvestimentoAPI:Url"]);
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
-
-
+builder.Services.AddHttpClient("ClienteAPI", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ClienteAPI:Url"]);
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+});
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

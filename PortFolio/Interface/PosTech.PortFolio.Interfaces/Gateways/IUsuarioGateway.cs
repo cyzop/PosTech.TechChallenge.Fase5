@@ -9,5 +9,6 @@ namespace PosTech.PortFolio.Interfaces.Gateways
         ClienteEntity ObterPorId(string id);
         void RegistrarUsuario(ClienteEntity novoUsuario);
         IEnumerable<ClienteEntity> ObterUsuarios();
+        ClienteEntity AtualizarUsuario(ClienteEntity usuario);
     }
 }

@@ -1,9 +1,44 @@
 ﻿@page "/"
 
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@using PosTech.PortFolioWeb.Client.Services
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager Navigation
+@inject UsuarioService UsuarioService
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime;
+
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Bem-vindo à aplicação de gerenciamento de portfólios!</h1>
 
-Welcome to your new app.
+<SurveyPrompt Title="Gerenciamento de Portfólios de Investimento" />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    //ClienteDao usuario = new();
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            if (UsuarioService?.Id == null)
+            {
+                var url = $"Cliente/ClientePorEmail/{user.Identity.Name}";
+                try
+                {
+                    ClienteDao userapi = await Http.GetFromJsonAsync<ClienteDao>(url);
+                    if (userapi != null)                    
+                        UsuarioService.SetUsuario(userapi.Id, userapi.Nome, userapi.DataCriacao);
+                }
+                catch(Exception ex){
+                    JSRuntime.InvokeAsync<bool>("alert", $"Err {ex.Message}");
+                }
+                Navigation.NavigateTo("/");
+             }
+        }
+    }
+}

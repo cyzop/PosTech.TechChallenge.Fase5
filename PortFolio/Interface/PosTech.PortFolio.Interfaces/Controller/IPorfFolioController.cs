@@ -9,5 +9,6 @@ namespace PosTech.PortFolio.Interfaces.Controller
         IEnumerable<PortFolioDao> ListarPorUsuario(string userMail);
 
         PortFolioDao RegistrarPortFolio(PortFolioDao portFolioDao);
+        PortFolioDao AtualizarPortFolio(PortFolioDao portFolioDao);
     }
 }

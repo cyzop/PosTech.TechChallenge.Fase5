@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PosTech.PortFolioWeb.Shared
+﻿namespace PosTech.PortFolioWeb.Shared
 {
     public class TransacaoDao
     {

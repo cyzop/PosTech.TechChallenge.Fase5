@@ -7,6 +7,15 @@
 
         public string? Email { get; private set; }
 
+        public DateTime DataCriacao { get; private set; }
+
+        public UsuarioDao(string id, string? nome, string? email, DateTime datacriacao)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            DataCriacao = datacriacao;
+        }
         public UsuarioDao(string id, string? nome, string? email)
         {
             Id = id;

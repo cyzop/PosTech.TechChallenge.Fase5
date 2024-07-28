@@ -29,5 +29,11 @@ namespace PosTech.PortFolio.Gateways
         {
             _database.Incluir(portFolio);
         }
+
+        public PortFolioEntity AtualizarPortFolio(PortFolioEntity portFolio)
+        {
+            _database.Atualizar(portFolio);
+            return portFolio;
+        }
     }
 }

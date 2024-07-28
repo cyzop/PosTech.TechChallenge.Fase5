@@ -15,6 +15,28 @@ namespace PosTech.PortFolio.Controllers
             _usuarioGateway = usuarioGateway;
         }
 
+        public UsuarioDao AtualizarUsuario(UsuarioDao usuario)
+        {
+            var usuarioBase = _usuarioGateway.ObterPorId(usuario.Id);
+
+            var usuarioEntity = new ClienteEntity(usuario.Nome, usuarioBase.Email, usuarioBase.Senha, usuario.Id, usuarioBase.DataCriacao);
+
+            var registroPaciente = new AtualizarUsuarioUseCase(usuarioEntity, usuarioBase);
+            //RN verifica se ainda não existe email cadastrado
+            registroPaciente.VerificarExistente();
+
+            //Atualização das informações
+            usuarioBase.Nome = usuario.Nome;
+
+            //RN formatar nome            
+            var usuarioNomeFormatter = new FormatarNomeUseCase(usuarioBase);
+            var usuarioNomeFormatado = usuarioNomeFormatter.Formatar();
+
+            _usuarioGateway.AtualizarUsuario(usuarioNomeFormatado);
+
+            return usuario;
+        }
+
         public UsuarioDao AtualizarUsuario(NovoUsuarioDao usuario)
         {
             var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
@@ -84,7 +106,7 @@ namespace PosTech.PortFolio.Controllers
         public UsuarioDao ObterUsuarioPorEmail(string email)
         {
             var usuarioBase = _usuarioGateway.ObterPorEmail(email);
-            return new UsuarioDao(usuarioBase.Id, usuarioBase.Nome, usuarioBase.Email);
+            return new UsuarioDao(usuarioBase.Id, usuarioBase.Nome, usuarioBase.Email, usuarioBase.DataCriacao);
         }
 
         public UsuarioDao ObterUsuarioPorId(string id)

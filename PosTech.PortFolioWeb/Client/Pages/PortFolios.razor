@@ -6,10 +6,15 @@
 @attribute [Authorize]
 @inject HttpClient Http
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
 
 <PageTitle>PortFolios</PageTitle>
 
 <h3>Portfolios</h3>
+
+<p>
+    <button class="btn btn-info" @onclick="NovoPortFolio">Novo</button>
+</p>
 
 @if (portfolios == null)
 {
@@ -20,16 +25,15 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Codigo</th>
                 <th>Nome</th>
-                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Data Criação</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var portFolio in portfolios)
             {
-                
                 <tr>
                     <td>
                         @portFolio.Nome
@@ -37,6 +41,7 @@ else
                     <td>@portFolio.Descricao</td>
                     <td>@portFolio.DataCriacao.ToString("dd/MM/yyyy")</td>
                     <td>
+                        <a href="@GetLinkPortfolio(portFolio.Id, portFolio.Nome)" class="btn btn-info">Detalhes</a>
                         <a href="@GetLinkTransacaoes(portFolio.Id, portFolio.Nome)" class="btn btn-warning">Transações</a>
                         <a href="@GetLinkComprar(portFolio.Id, portFolio.Nome)" class="btn btn-info">Comprar</a>
                         <a href="@GetLinkVender(portFolio.Id, portFolio.Nome)" class="btn btn-danger">Vender</a>
@@ -51,9 +56,17 @@ else
     private PortFolioDao[]? portfolios;
     private string userName;
 
+    private void NovoPortFolio()
+    {
+        NavigationManager.NavigateTo($"/novoportfolio");
+    }
     private string GetLinkTransacaoes(string id, string nome)
     {
         return id != null ? $"/transacoes/{id}/{nome}" : "#";
+    }
+    private string GetLinkPortfolio(string id, string nome)
+    {
+        return id != null ? $"/portfoliodetail/{id}/{nome}" : "#";
     }
 
     private string GetLinkComprar(string id, string nome)

@@ -1,11 +1,23 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Shared
+@using PosTech.PortFolioWeb.Client.Services
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager Navigation
+@inject UsuarioService UsuarioService
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime;
+@inject UsuarioService UsuarioService
 
 <AuthorizeView>
     <Authorized>
-        <a href="authentication/profile">Hello, @context.User.Identity?.Name!</a>
+        @* <a href="authentication/profile">Olá, @context.User.Identity?.Name!</a> *@
+        <a href="#">Olá, @context.User.Identity?.Name!</a>
+        <button class="nav-link btn btn-link oi oi-pencil" @onclick="BeginProfile"></button>
+      
         <button class="nav-link btn btn-link" @onclick="BeginLogOut">Log out</button>
+        
     </Authorized>
     <NotAuthorized>
         <a href="authentication/register">Registrar</a>
@@ -14,8 +26,13 @@
 </AuthorizeView>
 
 @code{
+   
     private void BeginLogOut()
     {
         Navigation.NavigateToLogout("authentication/logout");
+    }
+    private void BeginProfile()
+    {
+        Navigation.NavigateToLogout("profile");
     }
 }

@@ -27,5 +27,38 @@ namespace PosTech.PortFolioWeb.Server.Controllers
         {
             return await _portfolioApi.GetPortFoliosAsync(userKey);
         }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PortFolioDao))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<PortFolioDao> GetPorId([FromRoute] string id)
+        {
+            return await _portfolioApi.GetPortFolioPorIdAsync(id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(PortFolioDao portFolio)
+        {
+            if (ModelState.IsValid)
+            {
+                var x = await _portfolioApi.PostAsync(portFolio);
+                return Ok(x);
+            }
+            else
+                return BadRequest("Portfolio inválido");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(PortFolioDao portFolio)
+        {
+            if (ModelState.IsValid)
+            {
+                var x = await _portfolioApi.PutAsync(portFolio);
+                return Ok(x);
+            }
+            else
+                return BadRequest("Portfolio inválido");
+        }
     }
 }

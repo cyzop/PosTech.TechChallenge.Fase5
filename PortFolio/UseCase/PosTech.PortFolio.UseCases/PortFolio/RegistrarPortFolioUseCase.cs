@@ -1,5 +1,5 @@
-﻿using PosTech.Cliente.Messages;
-using PosTech.PortFolio.Entities;
+﻿using PosTech.PortFolio.Entities;
+using PosTech.PortFolio.Messages.PortFolio;
 using PosTech.TechChallenge.Shared;
 
 namespace PosTech.PortFolio.UseCases.PortFolio
@@ -19,7 +19,7 @@ namespace PosTech.PortFolio.UseCases.PortFolio
         {
             AssertionConcern.AssertArgumentNotEmpty(_novoPortFolio.Nome, ValidationMessages.MensagemNomeVazio);
 
-            var exist = portFoliosUsuario?.First(p => p.Nome.Equals(_novoPortFolio.Nome, StringComparison.InvariantCultureIgnoreCase));
+            var exist = portFoliosUsuario?.FirstOrDefault(p => p.Nome.Equals(_novoPortFolio.Nome, StringComparison.InvariantCultureIgnoreCase));
 
             AssertionConcern.AssertArgumentIsNull(exist, ValidationMessages.MensagemPortFolioJaExistente);
 

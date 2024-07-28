@@ -3,40 +3,68 @@
 
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using PosTech.PortFolioWeb.Client.Services
 @using PosTech.PortFolioWeb.Shared
 @attribute [Authorize]
 @inject HttpClient Http
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject UsuarioService UsuarioService
+@inject IJSRuntime JSRuntime;
 
 <PageTitle>PortFolio</PageTitle>
 
-<h3>PortFolio @Name</h3>
+<h3>Porftfolio @Name</h3>
 
-
-@if (portfolio == null)
+@if (entidade == null)
 {
     <p><em>Loading...</em></p>
+    <button class="btn btn-secondary" @onclick="Voltar">Cancelar</button>
 }
 else
 {
+    <EditForm Model="entidade" OnValidSubmit="AtualizaEntidade">
+        <div class="form-group mb-3">
+            <label for="entidadeName">Nome</label>
+            <InputText @bind-Value="entidade.Nome" MaxLength="150" class="form-control" id="entidadeName" />
+        </div>
+        <div class="form-group mb-3">
+            <label for="entidadeDescricao">Descrição</label>
+            <InputText @bind-Value="entidade.Descricao" MaxLength="150" class="form-control" id="entidadeDescricao" />
+        </div>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+      
+        <button class="btn btn-success" type="submit">Salvar</button>
+        <button class="btn btn-secondary" @onclick="Voltar">Cancelar</button>
+    </EditForm>
+    <br/>
+    <h4>Investimentos atuais</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>Codigo</th>
                 <th>Nome</th>
                 <th>Tipo</th>
+                <th>Quantidade</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var portFolio in portfolio)
+            @if (ativosInvestido != null)
             {
-                <tr>
-                    <td>
-                            @portFolio.Nome
-                    </td>
-                    <td>@portFolio.Descricao</td>
-                    <td>@portFolio.DataCriacao.ToString("dd/MM/yyyy")</td>
-                </tr>
+                @foreach (var ativo in ativosInvestido)
+                {
+                    @if (ativo.Quantidade > 0)
+                    {
+                        <tr>
+                            <td>@ativo.Codigo</td>
+                        <td>@ativo.Nome</td>
+                        <td>@ativo.Tipo</td>
+                        <td>@ativo.Quantidade</td>
+                    </tr>
+                    }
+                }
             }
         </tbody>
     </table>
@@ -49,5 +77,46 @@ else
     [Parameter]
     public string? Name { get; set; }
 
-    private PortFolioDao[]? portfolio;
+    private InvestimentoDao[]? ativosInvestido;
+    private PortFolioDao entidade { get; set; } = new();
+
+    private void Voltar()
+    {
+        NavigationManager.NavigateTo("/portfolios");
+    }
+
+    async Task AtualizaEntidade()
+    {
+        entidade.ClienteId = UsuarioService.Id;
+
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Confirma alterar as informaçõe do portfólio?");
+        if (confirmed is false)
+            return;
+
+        var response = await Http.PostAsJsonAsync("portfolio", entidade);
+        if (response.IsSuccessStatusCode)
+            Voltar();
+        else
+            JSRuntime.InvokeAsync<bool>("alert", $"Falha na operação {response.StatusCode}");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                ativosInvestido = await Http.GetFromJsonAsync<InvestimentoDao[]>($"Investimento/Ativos/{Id}");
+
+                var url = $"PortFolio/{Id}";
+                entidade = await Http.GetFromJsonAsync<PortFolioDao>(url);
+            }
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
 }

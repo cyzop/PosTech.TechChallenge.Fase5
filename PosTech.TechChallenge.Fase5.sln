@@ -103,11 +103,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Cliente.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotTech.PortFolio.ContaInvestimento.Api", "PotTech.PortFolio.ContaInvestimento.Api\PotTech.PortFolio.ContaInvestimento.Api.csproj", "{B535B86A-0E04-4241-A69A-10CA1F31FFB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolioWeb.Server", "PosTech.PortFolioWeb\Server\PosTech.PortFolioWeb.Server.csproj", "{82A37D50-1B06-4D70-89F5-BE7E8BE7E21D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolioWeb.Server", "PosTech.PortFolioWeb\Server\PosTech.PortFolioWeb.Server.csproj", "{82A37D50-1B06-4D70-89F5-BE7E8BE7E21D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolioWeb.Client", "PosTech.PortFolioWeb\Client\PosTech.PortFolioWeb.Client.csproj", "{9FB10452-370A-40D2-9E6B-B3372797C663}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolioWeb.Client", "PosTech.PortFolioWeb\Client\PosTech.PortFolioWeb.Client.csproj", "{9FB10452-370A-40D2-9E6B-B3372797C663}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolioWeb.Shared", "PosTech.PortFolioWeb\Shared\PosTech.PortFolioWeb.Shared.csproj", "{E79E7D5E-4B96-4406-972D-A73F3E0FF113}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolioWeb.Shared", "PosTech.PortFolioWeb\Shared\PosTech.PortFolioWeb.Shared.csproj", "{E79E7D5E-4B96-4406-972D-A73F3E0FF113}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{49F2AB76-8169-4758-BD7C-D044C458DF4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Transacao.Consumer", "PosTech.PortFolio.Transacao.Consumer\PosTech.PortFolio.Transacao.Consumer.csproj", "{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,6 +235,10 @@ Global
 		{E79E7D5E-4B96-4406-972D-A73F3E0FF113}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E79E7D5E-4B96-4406-972D-A73F3E0FF113}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E79E7D5E-4B96-4406-972D-A73F3E0FF113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -284,6 +292,8 @@ Global
 		{82A37D50-1B06-4D70-89F5-BE7E8BE7E21D} = {F2D16A2F-B68C-4811-A2F5-63140AACF9E7}
 		{9FB10452-370A-40D2-9E6B-B3372797C663} = {F2D16A2F-B68C-4811-A2F5-63140AACF9E7}
 		{E79E7D5E-4B96-4406-972D-A73F3E0FF113} = {F2D16A2F-B68C-4811-A2F5-63140AACF9E7}
+		{49F2AB76-8169-4758-BD7C-D044C458DF4F} = {31AB487C-AD4C-4729-9CC9-945EFCABEDB0}
+		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC} = {49F2AB76-8169-4758-BD7C-D044C458DF4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9C716AC-59BB-4F94-9335-6CD3C57888BF}

@@ -13,5 +13,12 @@ namespace PosTech.PortFolio.Repository.Sql
         {
             return _context.Cliente.FirstOrDefault(c=>c.Email.ToLower().Equals(email.ToLower()));
         }
+
+        public ClienteEntity Atualizar(ClienteEntity entity)
+        {
+            _context.Cliente.Update(entity);// .Where(p => p.Id == entity.Id).UpdateFromQuery() .ExecuteUpdate( u=> new PortFolioEntity() { Cliente = u.Cliente, })
+            _context.SaveChanges();
+            return entity;
+        }
     }
 }

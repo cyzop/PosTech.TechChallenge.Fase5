@@ -27,5 +27,7 @@ namespace PosTech.PortFolio.Gateways
         public IEnumerable<ClienteEntity> ObterUsuarios()
             => _database.ConsultarTodos();
 
+        public ClienteEntity AtualizarUsuario(ClienteEntity usuario)
+            => _database.Atualizar(usuario);
     }
 }

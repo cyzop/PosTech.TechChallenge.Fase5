@@ -85,6 +85,49 @@ namespace PosTech.PortFolio.Api.Controllers
         }
 
 
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PortFolioDao))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> PostPortFolio(PortFolioModel portFolio)
+        {
+            _logger.LogInformation($"Post PortFolio {portFolio.Nome}");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    PortFolioDao dao = new PortFolioDao()
+                    {
+                        Id = portFolio.Id,
+                        Nome = portFolio.Nome,
+                        Descricao = portFolio.Descricao,
+                        Usuario = new UsuarioDao(portFolio.ClienteId)
+                    };
+
+                    var registro = _controller.AtualizarPortFolio(dao);
+
+                    if (registro != null)
+                        return Ok(registro);
+                    else
+                        return StatusCode(StatusCodes.Status204NoContent);//NoContent
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message, ex);
+                    return BadRequest(ex.Message);
+                }
+            }
+            else
+            {
+                var erros = ModelState.Values
+                    .Where(x => x.ValidationState == ModelValidationState.Invalid)
+                    .Select(x => x.Errors?.FirstOrDefault()?.ErrorMessage).ToList();
+                return BadRequest(new
+                {
+                    PayloadErros = erros
+                });
+            }
+        }
+
         [HttpGet("PortFoliosUsuario/{userMail}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerator<PortFolioDao>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -7,19 +7,19 @@ namespace PosTech.PortFolio.UseCases.PortFolio
     public class RegistrarPortFolioUseCase
     {
         private PortFolioEntity _novoPortFolio;
-        private IEnumerable<PortFolioEntity> portFoliosUsuario;
+        private IEnumerable<PortFolioEntity> _portFoliosUsuario;
 
         public RegistrarPortFolioUseCase(PortFolioEntity novoPortFolio, IEnumerable<PortFolioEntity> portFoliosUsuario)
         {
             _novoPortFolio = novoPortFolio;
-            portFoliosUsuario = portFoliosUsuario;
+            _portFoliosUsuario = portFoliosUsuario;
         }
 
         public PortFolioEntity VerificarPortFolio()
         {
             AssertionConcern.AssertArgumentNotEmpty(_novoPortFolio.Nome, ValidationMessages.MensagemNomeVazio);
 
-            var exist = portFoliosUsuario?.FirstOrDefault(p => p.Nome.Equals(_novoPortFolio.Nome, StringComparison.InvariantCultureIgnoreCase));
+            var exist = _portFoliosUsuario?.FirstOrDefault(p => p.Nome.Equals(_novoPortFolio.Nome, StringComparison.InvariantCultureIgnoreCase));
 
             AssertionConcern.AssertArgumentIsNull(exist, ValidationMessages.MensagemPortFolioJaExistente);
 

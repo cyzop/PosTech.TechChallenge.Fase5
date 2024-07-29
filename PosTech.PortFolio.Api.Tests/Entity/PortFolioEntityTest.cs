@@ -4,12 +4,12 @@ using PosTech.PortFolio.Tests.Fixtures;
 
 namespace PosTech.PortFolio.Tests.Entity
 {
-    [Collection(nameof(PortFolioEntityTestFixtureCollection))]
+    [Collection(nameof(PortFolioTestFixtureCollection))]
     public class PortFolioEntityTest
     {
-        private readonly PortFolioEntityTestFixture _fixture;
+        private readonly PortFolioTestFixture _fixture;
 
-        public PortFolioEntityTest(PortFolioEntityTestFixture fixture)
+        public PortFolioEntityTest(PortFolioTestFixture fixture)
         {
             _fixture = fixture;
         }

@@ -22,5 +22,10 @@ namespace PosTech.PortFolio.Entities
             AssertionConcern.AssertArgumentNotEmpty(Nome, Messages.Cliente.ValidationMessages.MensagemNomeVazio);
             AssertionConcern.AssertArgumentNotEmpty(Email, Messages.Cliente.ValidationMessages.MensagemEmailVazio);
         }
+
+        public void SetNome(string nome)
+        {
+            Nome = nome.Trim();
+        }
     }
 }

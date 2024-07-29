@@ -3,11 +3,11 @@ using PosTech.PortFolio.Entity.Tests.Fixtures;
 
 namespace PosTech.PortFolio.Entity.Tests
 {
-    [Collection(nameof(ClienteEntityTestFixtureCollection))]
+    [Collection(nameof(ClienteTestFixtureCollection))]
     public class ClienteEntityTest
     {
-        private readonly ClienteEntityTestFixture _fixture;
-        public ClienteEntityTest(ClienteEntityTestFixture fixture)
+        private readonly ClienteTestFixture _fixture;
+        public ClienteEntityTest(ClienteTestFixture fixture)
         {
             _fixture = fixture;
         }

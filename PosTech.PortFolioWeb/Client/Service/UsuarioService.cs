@@ -11,5 +11,10 @@
             Nome = name;
             DataCriacao = data;
         }
+
+        public void SetNome(string nome)
+        {
+            this.Nome = nome;
+        }
     }
 }

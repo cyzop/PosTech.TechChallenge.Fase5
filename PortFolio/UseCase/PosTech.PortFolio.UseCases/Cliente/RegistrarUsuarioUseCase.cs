@@ -18,7 +18,6 @@ namespace PosTech.PortFolio.UseCases
         public ClienteEntity VerificarNovo()
         {
             AssertionConcern.AssertArgumentNotEmpty(_novoUsuario.Nome, ValidationMessages.MensagemNomeVazio);
-            AssertionConcern.AssertArgumentNotEmpty(_novoUsuario.Senha, ValidationMessages.MensagemSenhaVazia);
             AssertionConcern.AssertArgumentNotEmpty(_novoUsuario.Email, ValidationMessages.MensagemEmailVazio);
 
             _novoUsuario.DataCriacao = DateTime.Now;

@@ -4,15 +4,18 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>44cab207-9c55-42a7-97a6-a992954ffa4c</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.19" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cliente\Presenter\PosTech.Cliente.DAO\PosTech.Cliente.DAO.csproj" />
     <ProjectReference Include="..\PortFolio\Controller\PosTech.PortFolio.Controllers\PosTech.PortFolio.Controllers.csproj" />
     <ProjectReference Include="..\PortFolio\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
     <ProjectReference Include="..\PortFolio\Infrastructure\PosTech.PorfFolio.Repository.Sql\PosTech.PortFolio.Repository.Sql.csproj" />

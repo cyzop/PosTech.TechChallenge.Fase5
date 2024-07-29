@@ -13,7 +13,7 @@ namespace PosTech.PortFolio.Repository.Sql.Configurations
             builder.Property(u => u.Id).HasColumnType("varchar(100)");
             builder.Property(u => u.DataCriacao).HasColumnType("DATETIME").IsRequired();
             builder.Property(u => u.Tipo).HasColumnType("VARCHAR(12)").IsRequired();
-            builder.Property(u => u.Codigo).HasColumnType("VARCHAR(5)").IsRequired();
+            builder.Property(u => u.Codigo).HasColumnType("VARCHAR(15)").IsRequired();
         }
     }
 }

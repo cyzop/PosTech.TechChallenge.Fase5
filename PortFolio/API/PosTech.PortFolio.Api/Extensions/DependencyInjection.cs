@@ -29,8 +29,8 @@ namespace PosTech.PortFolio.Api.Extensions
             services.AddScoped<ITransacaoGateway, TransacaoGateway>();
             services.AddScoped<ITransacaoController, TransacaoController>();
 
-            //Usuario
-            services.AddScoped<IClienteController, ClienteController>();
+            ////Usuario
+            //services.AddScoped<IClienteController, ClienteController>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IUsuarioGateway, UsuarioGateway>();
 

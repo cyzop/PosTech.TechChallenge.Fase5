@@ -32,5 +32,10 @@
         {
             Id = id;
         }
+
+        public void SetDataCriacao(DateTime dataCriacao)
+        {
+            DataCriacao = dataCriacao;
+        }
     }
 }

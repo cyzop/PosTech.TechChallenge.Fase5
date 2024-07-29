@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Cliente\Presenter\PosTech.Cliente.Messages\PosTech.Cliente.Messages.csproj" />
     <ProjectReference Include="..\..\..\Shared\PosTech.TechChallenge.Shared\PosTech.TechChallenge.Shared.csproj" />
     <ProjectReference Include="..\..\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
     <ProjectReference Include="..\..\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />

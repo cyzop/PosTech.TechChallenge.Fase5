@@ -66,7 +66,7 @@ namespace PosTech.PortFolio.Api.Controllers
                 if (ativos?.Count() > 0)
                     return Ok(ativos);
                 else
-                    return StatusCode(StatusCodes.Status204NoContent);//NoContent
+                    return Ok(new List<InvestimentoDao>());
             }
             catch (Exception ex)
             {

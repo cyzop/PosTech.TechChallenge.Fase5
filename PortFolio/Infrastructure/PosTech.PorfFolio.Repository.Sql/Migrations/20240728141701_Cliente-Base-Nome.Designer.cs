@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PosTech.PortFolio.Repository.Sql;
 
@@ -11,9 +12,11 @@ using PosTech.PortFolio.Repository.Sql;
 namespace PosTech.PortFolio.Repository.Sql.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240728141701_Cliente-Base-Nome")]
+    partial class ClienteBaseNome
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +35,7 @@ namespace PosTech.PortFolio.Repository.Sql.Migrations
 
                     b.Property<string>("Codigo")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(15)");
+                        .HasColumnType("VARCHAR(5)");
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("DATETIME");

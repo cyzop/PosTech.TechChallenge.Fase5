@@ -19,7 +19,7 @@ namespace PosTech.PortFolio.Controllers
         {
             var usuarioBase = _usuarioGateway.ObterPorId(usuario.Id);
 
-            var usuarioEntity = new ClienteEntity(usuario.Nome, usuarioBase.Email, usuarioBase.Senha, usuario.Id, usuarioBase.DataCriacao);
+            var usuarioEntity = new ClienteEntity(usuario.Nome, usuarioBase.Email, usuario.Id, usuarioBase.DataCriacao);
 
             var registroPaciente = new AtualizarUsuarioUseCase(usuarioEntity, usuarioBase);
             //RN verifica se ainda não existe email cadastrado
@@ -41,12 +41,11 @@ namespace PosTech.PortFolio.Controllers
         {
             var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
 
-            var usuarioEntity = new ClienteEntity(usuario.Nome, usuario.Email, usuario.Senha, usuario.Id, usuarioBase.DataCriacao)
+            var usuarioEntity = new ClienteEntity(usuario.Nome, usuario.Email, usuario.Id, usuarioBase.DataCriacao)
             {
                 Id = usuario.Id,
                 Nome = usuario.Nome,
                 Email = usuario.Email,
-                Senha = usuario.Senha
             };
 
             var registroPaciente = new RegistrarUsuarioUseCase(usuarioEntity, usuarioBase);
@@ -57,26 +56,17 @@ namespace PosTech.PortFolio.Controllers
             var usuarioNomeFormatter = new FormatarNomeUseCase(usuarioEntity);
             var usuarioNomeFormatado = usuarioNomeFormatter.Formatar();
 
-            //RN formatar senha (hash)
-            var usuarioHashFormatter = new GerarHashSenhaUseCase(usuarioNomeFormatado);
-            var usuarioSenhaFormatado = usuarioHashFormatter.Formatar();
+            _usuarioGateway.RegistrarUsuario(usuarioNomeFormatado);
 
-            _usuarioGateway.RegistrarUsuario(usuarioSenhaFormatado);
-
-            //Hide password
-            var passwordCleanner = new EsconderSenhaUseCase(usuarioSenhaFormatado);
-            var usuarioSenhaOculta = passwordCleanner.EsconderSenha();
-            usuario.SetSenha(usuarioSenhaOculta.Senha);
-           
             return usuario;
         }
 
         public UsuarioDao IncluirUsuario(NovoUsuarioDao usuario)
         {
-            var usuarioEntity = new ClienteEntity(usuario.Nome, usuario.Email, usuario.Senha, usuario.Id, DateTime.Now);
+            var usuarioEntity = new ClienteEntity(usuario.Nome, usuario.Email, usuario.Id, DateTime.Now);
 
             var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
-            
+
             var registroPaciente = new RegistrarUsuarioUseCase(usuarioEntity, usuarioBase);
             //RN verifica se ainda não existe email cadastrado
             registroPaciente.VerificarNovo();
@@ -85,20 +75,9 @@ namespace PosTech.PortFolio.Controllers
             var usuarioNomeFormatter = new FormatarNomeUseCase(usuarioEntity);
             var usuarioNomeFormatado = usuarioNomeFormatter.Formatar();
 
-            //RN formatar senha (hash)
-            var usuarioHashFormatter = new GerarHashSenhaUseCase(usuarioNomeFormatado);
-            var usuarioSenhaFormatado = usuarioHashFormatter.Formatar();
-
-            _usuarioGateway.RegistrarUsuario(usuarioSenhaFormatado);
-            usuario.SetId(usuarioSenhaFormatado.Id);
-
-            //Hide password
-            var passwordCleanner = new EsconderSenhaUseCase(usuarioSenhaFormatado);
-            var usuarioSenhaOculta = passwordCleanner.EsconderSenha();
-
-            usuario.SetSenha(usuarioSenhaOculta.Senha);
-            
-            
+            _usuarioGateway.RegistrarUsuario(usuarioNomeFormatado);
+            usuario.SetId(usuarioNomeFormatado.Id);
+            usuario.SetDataCriacao(usuarioNomeFormatado.DataCriacao);
 
             return usuario;
         }
@@ -106,7 +85,10 @@ namespace PosTech.PortFolio.Controllers
         public UsuarioDao ObterUsuarioPorEmail(string email)
         {
             var usuarioBase = _usuarioGateway.ObterPorEmail(email);
-            return new UsuarioDao(usuarioBase.Id, usuarioBase.Nome, usuarioBase.Email, usuarioBase.DataCriacao);
+            if (usuarioBase != null)
+                return new UsuarioDao(usuarioBase.Id, usuarioBase.Nome, usuarioBase.Email, usuarioBase.DataCriacao);
+            else
+                return null;
         }
 
         public UsuarioDao ObterUsuarioPorId(string id)
@@ -118,7 +100,7 @@ namespace PosTech.PortFolio.Controllers
         public IEnumerable<UsuarioDao> ListarUsuarios()
         {
             var usuarios = _usuarioGateway.ObterUsuarios();
-            var usuariosDao = usuarios?.Select(e => 
+            var usuariosDao = usuarios?.Select(e =>
                                 new UsuarioDao(e.Id, e.Nome, e.Email));
             return usuariosDao?.ToList();
         }

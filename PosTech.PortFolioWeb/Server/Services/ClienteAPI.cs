@@ -15,7 +15,11 @@ namespace PosTech.PortFolioWeb.Server.Services
 
         public async Task<ClienteDao> GetClienteAsync(string email)
         {
-            return await _httpCliente.GetFromJsonAsync<ClienteDao>($"Cliente/Email/{email}");
+            var ret = await _httpCliente.GetFromJsonAsync<ClienteDao>($"Cliente/Email/{email}");
+            if (ret != null)
+                return Task<ClienteDao>.Factory.StartNew(() => ret).Result;
+            else
+                throw new Exception("Cliente não localizado!");
         }
 
         public async Task<ClienteDao> PostClienteAsync(ClienteDao cliente)

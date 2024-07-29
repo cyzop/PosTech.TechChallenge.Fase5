@@ -11,7 +11,6 @@ namespace PosTech.PortFolio.Repository.Sql
         public ApplicationDbContext()
         {
         }
-
         public ApplicationDbContext(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -29,9 +28,7 @@ namespace PosTech.PortFolio.Repository.Sql
             if (!optionsBuilder.IsConfigured)
             {
                 string str = _configuration?.GetSection("ConnectionStrings:ConnectionString")?.Value;
-                optionsBuilder.UseSqlServer(string.IsNullOrEmpty(str) ? "Server=localhost\\SQLExpress; Database = portfolioStore; Trusted_Connection = True; TrustServerCertificate = True" : str
-                   // ,p => p.MigrationsAssembly("PosTech.PortFolio.Repository.Sql")
-                   );
+                optionsBuilder.UseSqlServer(str);
                 optionsBuilder.UseLazyLoadingProxies();
             }
         }
@@ -46,6 +43,7 @@ namespace PosTech.PortFolio.Repository.Sql
 
             //B) OU  configurar para pegar a configuration no assembly
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
         }
     }
 }

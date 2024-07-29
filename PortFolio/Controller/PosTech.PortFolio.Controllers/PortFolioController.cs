@@ -23,7 +23,7 @@ namespace PosTech.PortFolio.Controllers
             var usuario = _usuarioGateway.ObterPorEmail(userMail);
             
             if (usuario == null)
-                return null;
+                return new List<PortFolioDao>();
 
             return _gateway.ObterPorUsuario(usuario.Id)?.Select(e => PortFolioDaoAdapter.GetDaoFromEntity(e));
         }

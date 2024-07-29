@@ -24,11 +24,18 @@ namespace PosTech.PortFolioWeb.Server.Services
             try
             {
                 string url = $"PortFolio/PortFoliosUsuario/{WebUtility.UrlEncode(userKey)}";
-                return await _httpCliente.GetFromJsonAsync<ICollection<PortFolioDao>>(url); 
+                var ret = await _httpCliente.GetFromJsonAsync<ICollection<PortFolioDao>>(url);
+
+                if (ret != null)
+                {
+                    return Task<ICollection<PortFolioDao>>.Factory.StartNew(() => ret).Result;
+                }
+                else
+                    throw new Exception("Erro ao obter portfólios do usuário");
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception($"Erro ao obter portfólios do usuário {ex.Message}");
             }
         }
 
@@ -52,7 +59,7 @@ namespace PosTech.PortFolioWeb.Server.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception($"Erro ao savlar portfólio {ex.Message}");
             }
         }
 

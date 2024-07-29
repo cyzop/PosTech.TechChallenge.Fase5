@@ -55,13 +55,16 @@ else
 
     async Task AtualizaEntidade()
     {
-         bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Confirma alterar seu nome de usuário?");
-         if (confirmed is false)
-             return;
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Confirma alterar seu nome de usuário?");
+        if (confirmed is false)
+            return;
 
         var response = await Http.PostAsJsonAsync("cliente", cliente);
-         if (response.IsSuccessStatusCode)
-             Voltar();
+        if (response.IsSuccessStatusCode)
+        {
+            UsuarioService.SetNome(cliente.Nome);
+            Voltar();
+         }
          else
             JSRuntime.InvokeAsync<bool>("alert", $"Falha na operação {response.StatusCode}");
     }

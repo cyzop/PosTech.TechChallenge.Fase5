@@ -138,11 +138,8 @@ namespace PosTech.PortFolio.Api.Controllers
             {
                 _logger.LogInformation($"PortFoliosUsuario {userMail}");
                 var registros = _controller.ListarPorUsuario(userMail);
-
-                if (registros?.Count() > 0)
-                    return Ok(registros);
-                else
-                    return StatusCode(StatusCodes.Status204NoContent);//NoContent
+                
+                return Ok(registros);
             }
             catch (Exception ex)
             {

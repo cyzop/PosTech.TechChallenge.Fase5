@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Cliente\Interface\PosTech.Cliente.Interfaces\PosTech.Cliente.Interfaces.csproj" />
     <ProjectReference Include="..\..\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
     <ProjectReference Include="..\..\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
   </ItemGroup>

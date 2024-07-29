@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PortFolio\API\PosTech.PortFolio.Api\PosTech.PortFolio.Api.csproj" />
+    <ProjectReference Include="..\PosTech.PortFolio.Cliente.Api\PosTech.PortFolio.Cliente.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>

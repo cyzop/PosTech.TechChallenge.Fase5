@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using PosTech.PortFolio.Api.Controllers;
 using PosTech.PortFolio.Api.Tests.fixtures;
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 using PosTech.PortFolio.Interfaces.Controller;
 using PosTech.PortFolio.Interfaces.Gateways;
+using PosTech.PortFolio.Api.Controllers;
 
 namespace PosTech.PortFolio.Tests.API
 {

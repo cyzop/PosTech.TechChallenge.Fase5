@@ -6,15 +6,19 @@ namespace PosTech.PortFolio.Repository.Sql
 {
     public class ApplicationDbContext : DbContext
     {
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration? _configuration;
 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration) 
+            : base(options) {
+            _configuration = configuration;
+        }
         public ApplicationDbContext()
         {
         }
-        public ApplicationDbContext(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        //public ApplicationDbContext(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
 
         public DbSet<ClienteEntity> Cliente { get; set; }
         public DbSet<AtivoEntity> Ativo { get; set; }

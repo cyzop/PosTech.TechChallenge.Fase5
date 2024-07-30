@@ -1,15 +1,13 @@
-﻿using Bogus;
-using Microsoft.EntityFrameworkCore.Update;
-using PosTech.PortFolio.Api.Tests.fixtures;
+﻿using Microsoft.AspNetCore.Mvc;
 using PosTech.PortFolio.Entities;
+using PosTech.PortFolio.Messages.PortFolio;
 using PosTech.PortFolio.Tests.Fixtures;
 using PosTech.PortFolio.UseCases.PortFolio;
-using PosTech.PortFolio.UseCases.Transacao;
 
-namespace PosTech.PortFolio.Tests.UseCase
+namespace PosTech.PortFolio.Tests.UnitTests.UseCase
 {
     [Collection(nameof(PortFolioTestFixtureCollection))]
-    public  class RegistrarPortfolioTest
+    public class RegistrarPortfolioTest
     {
         private readonly PortFolioTestFixture _fixture;
 
@@ -20,10 +18,10 @@ namespace PosTech.PortFolio.Tests.UseCase
 
         [Fact(DisplayName = "Teste de validacao da criação de um novo Portfólio")]
         [Trait("UseCase.Portfólio", "Teste de validação de NÃO criação de um novo Portfólio cujo nome já existe")]
-        public async void ValidateUseCase_Should_AssertException_VerifyMethod()
+        public void ValidateUseCase_Should_AssertException_VerifyMethod()
         {
             //Arrange            
-            var portfoliosUsuario = new List<PortFolioEntity> 
+            var portfoliosUsuario = new List<PortFolioEntity>
             {
                  new PortFolioTestFixture().GerarPortFolioEntity(),
                  new PortFolioTestFixture().GerarPortFolioEntity(),
@@ -34,23 +32,17 @@ namespace PosTech.PortFolio.Tests.UseCase
             //Act
             var useCase = new RegistrarPortFolioUseCase(novoPortfolioMesmoNome, portfoliosUsuario);
 
-            var verifyAssertException = false;
-            try
-            {
-                var resultado = useCase.VerificarPortFolio();
-            }
-            catch (ArgumentException assertException)
-            {
-                verifyAssertException = true;
-            }
+
+            //Act
+            var result = Assert.Throws<ArgumentException>(() => useCase.VerificarPortFolio());
 
             //Assert
-            Assert.Equal(true, verifyAssertException);
+            Assert.Equal(ValidationMessages.MensagemPortFolioJaExistente, result.Message);
         }
 
         [Fact(DisplayName = "Teste de validacao da criação de um novo Portfólio com nome invalido")]
         [Trait("UseCase.Portfólio", "Teste de validação de criação de um novo Portfólio")]
-        public async void ValidateUseCase_Should_NotException_VerifyMethod()
+        public void ValidateUseCase_Should_NotException_VerifyMethod()
         {
             //Arrange
             //Arrange            
@@ -70,17 +62,17 @@ namespace PosTech.PortFolio.Tests.UseCase
             {
                 var resultado = useCase.VerificarPortFolio();
                 //Assert
-                Assert.Equal(resultado.GetType(), typeof(PortFolioEntity));
+                Assert.Equal(typeof(PortFolioEntity), resultado.GetType());
                 Assert.Equal(novoPortfolio.Nome, resultado.Nome);
                 Assert.Equal(novoPortfolio.Cliente.Id, resultado.Cliente.Id);
             }
-            catch (ArgumentException assertException)
+            catch (ArgumentException)
             {
                 verifyAssertException = true;
             }
 
             //Assert
-            Assert.Equal(false, verifyAssertException);
+            Assert.False(verifyAssertException);
         }
     }
 }

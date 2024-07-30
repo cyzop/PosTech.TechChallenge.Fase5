@@ -1,4 +1,5 @@
-﻿using PosTech.PortFolio.Assertion;
+﻿
+using PosTech.PortFolio.Assertion;
 
 namespace PosTech.PortFolio.Entities
 {

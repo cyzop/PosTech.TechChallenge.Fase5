@@ -1,4 +1,4 @@
-﻿namespace PosTech.PortFolio.Entity.Tests.Fixtures
+﻿namespace PosTech.PortFolio.Tests.Fixtures
 {
 
     [CollectionDefinition("ClienteTestFixtureCollection")]

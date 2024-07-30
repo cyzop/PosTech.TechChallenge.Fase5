@@ -1,7 +1,7 @@
 ﻿using PosTech.PortFolio.Entities;
 using PosTech.PortFolio.Tests.Fixtures;
 
-namespace PosTech.PortFolio.Tests.Entity
+namespace PosTech.PortFolio.Tests.UnitTests.Entity
 {
     [Collection(nameof(TransacaoTestFixtureCollection))]
     public class TransacaoEntityTest
@@ -15,7 +15,7 @@ namespace PosTech.PortFolio.Tests.Entity
 
         [Fact(DisplayName = "Teste unitario de validacao de Transação Financeira")]
         [Trait("Entity.Transacao", "Teste unitario de validacao de Transação Financeira")]
-        public async void ValidateEntity_Should_New_TransacaoEntity()
+        public void ValidateEntity_Should_New_TransacaoEntity()
         {
             //Arrange
             var entidade = _fixture.GerarTransacaoEntity();
@@ -24,8 +24,8 @@ namespace PosTech.PortFolio.Tests.Entity
             var act = entidade != null;
 
             //Assert
-            Assert.Equal(true, act);
-            Assert.Equal(entidade.GetType(), typeof(TransacaoEntity));
+            Assert.True(act);
+            Assert.Equal(typeof(TransacaoEntity), entidade?.GetType());
         }
     }
 }

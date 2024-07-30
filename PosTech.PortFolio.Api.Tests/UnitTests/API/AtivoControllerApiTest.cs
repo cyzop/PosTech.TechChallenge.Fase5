@@ -1,23 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using PosTech.PortFolio.Api.Tests.fixtures;
+using PosTech.PortFolio.Api.Controllers;
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 using PosTech.PortFolio.Interfaces.Controller;
 using PosTech.PortFolio.Interfaces.Gateways;
-using PosTech.PortFolio.Api.Controllers;
+using PosTech.PortFolio.Tests.Fixtures;
 
-namespace PosTech.PortFolio.Tests.API
+namespace PosTech.PortFolio.Tests.UnitTests.API
 {
     [Collection(nameof(AtivoTestFixtureCollection))]
     public class AtivoControllerApiTest
     {
-        private Mock<ILogger<AtivoController>> _loggerMock;
-        private Mock<IAtivoController> _ativoController;
-        private Mock<IAtivoGateway> _ativoGateway;
-        private AtivoTestFixture _fixture;
-        private AtivoController _controller;
+        private readonly Mock<ILogger<AtivoController>> _loggerMock;
+        private readonly Mock<IAtivoController> _ativoController;
+        private readonly Mock<IAtivoGateway> _ativoGateway;
+        private readonly AtivoTestFixture _fixture;
+        private readonly AtivoController _controller;
 
         public AtivoControllerApiTest(AtivoTestFixture fixture)
         {
@@ -25,6 +25,8 @@ namespace PosTech.PortFolio.Tests.API
             _ativoController = new Mock<IAtivoController>();
             _ativoGateway = new Mock<IAtivoGateway>();
             _fixture = fixture;
+
+            _controller = new AtivoController(_loggerMock.Object, _ativoController.Object);
         }
 
 
@@ -46,8 +48,6 @@ namespace PosTech.PortFolio.Tests.API
             };
 
             _ativoGateway.Setup(gtw => gtw.ObterTodos()).Returns(ativosEntity);
-
-            _controller = new AtivoController(_loggerMock.Object, _ativoController.Object);
 
             //Act
             var result = await _controller.GetAtivos();

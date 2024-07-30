@@ -1,7 +1,7 @@
 ﻿using PosTech.PortFolio.Entities;
-using PosTech.PortFolio.Entity.Tests.Fixtures;
+using PosTech.PortFolio.Tests.Fixtures;
 
-namespace PosTech.PortFolio.Entity.Tests
+namespace PosTech.PortFolio.Tests.UnitTests.Entity
 {
     [Collection(nameof(ClienteTestFixtureCollection))]
     public class ClienteEntityTest
@@ -14,7 +14,7 @@ namespace PosTech.PortFolio.Entity.Tests
 
         [Fact(DisplayName = "Teste unitario de validacao de Cliente")]
         [Trait("Entity.Cliente", "Teste unitario de validacao de cliente")]
-        public async void ValidateEntity_Should_New_ClienteEntity()
+        public void ValidateEntity_Should_New_ClienteEntity()
         {
             //Arrange
             var entidade = _fixture.GerarClienteEntity();
@@ -23,8 +23,8 @@ namespace PosTech.PortFolio.Entity.Tests
             var act = entidade != null;
 
             //Assert
-            Assert.Equal(true, act);
-            Assert.Equal(entidade.GetType(), typeof(ClienteEntity));
+            Assert.True(act);
+            Assert.Equal(typeof(ClienteEntity),entidade?.GetType());
         }
     }
 }

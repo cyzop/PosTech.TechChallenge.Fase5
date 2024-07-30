@@ -2,7 +2,7 @@
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 
-namespace PosTech.PortFolio.Api.Tests.fixtures
+namespace PosTech.PortFolio.Tests.Fixtures
 {
     public class AtivoTestFixture
     {

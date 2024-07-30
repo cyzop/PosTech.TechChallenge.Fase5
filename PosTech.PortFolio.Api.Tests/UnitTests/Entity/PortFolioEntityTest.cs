@@ -1,8 +1,7 @@
 ﻿using PosTech.PortFolio.Entities;
-using PosTech.PortFolio.Entity.Tests.Fixtures;
 using PosTech.PortFolio.Tests.Fixtures;
 
-namespace PosTech.PortFolio.Tests.Entity
+namespace PosTech.PortFolio.Tests.UnitTests.Entity
 {
     [Collection(nameof(PortFolioTestFixtureCollection))]
     public class PortFolioEntityTest
@@ -16,7 +15,7 @@ namespace PosTech.PortFolio.Tests.Entity
 
         [Fact(DisplayName = "Teste unitario de validacao de PortFolio")]
         [Trait("Entity.PortFolio", "Teste unitario de validacao de PortFolio")]
-        public async void ValidateEntity_Should_New_PortFolioEntity()
+        public void ValidateEntity_Should_New_PortFolioEntity()
         {
             //Arrange
             var entidade = _fixture.GerarPortFolioEntity();
@@ -25,8 +24,8 @@ namespace PosTech.PortFolio.Tests.Entity
             var act = entidade != null;
 
             //Assert
-            Assert.Equal(true, act);
-            Assert.Equal(entidade.GetType(), typeof(PortFolioEntity));
+            Assert.True(act);
+            Assert.Equal(typeof(PortFolioEntity), entidade?.GetType());
         }
     }
 }

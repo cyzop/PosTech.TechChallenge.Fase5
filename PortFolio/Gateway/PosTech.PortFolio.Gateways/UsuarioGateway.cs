@@ -17,8 +17,7 @@ namespace PosTech.PortFolio.Gateways
             (_database.ConsultarPorEmail(email));
 
 
-        public ClienteEntity ObterPorId(string id) =>
-            (_database.ConsultarPorId(id));
+        public ClienteEntity ObterPorId(string id) => (_database.ConsultarPorId(id));
 
 
         public void RegistrarUsuario(ClienteEntity novoUsuario)

@@ -1,6 +1,5 @@
 ﻿using Bogus;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using PosTech.PortFolio.Api.Tests.fixtures;
+using Bogus.DataSets;
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 
@@ -15,6 +14,30 @@ namespace PosTech.PortFolio.Tests.Fixtures
             _faker = new Faker();
         }
 
+        public AtivoTransacaoDao GerarAtivoTransacaoDao(AtivoTransacaoDao ativo, int quantidade)
+        {
+            return new AtivoTransacaoDao()
+            {
+                Nome = ativo.Nome,
+                Codigo = ativo.Codigo,
+                Preco = ativo.Preco,
+                Quantidade = quantidade,
+                Tipo = ativo.Tipo
+            };
+        }
+        public TransacaoDao GerarTransacaoVendaDao(PortFolioDao portFolio, AtivoTransacaoDao ativo, int quantidade)
+        {
+            return GetTransacaoDao(TipoTransacao.Venda,
+                new AtivoTransacaoDao()
+                {
+                    Nome = ativo.Nome,
+                    Codigo = ativo.Codigo,
+                    Preco = ativo.Preco,
+                    Quantidade = quantidade,
+                    Tipo = ativo.Tipo
+                },
+                portFolio);
+        }
         public TransacaoDao GerarTransacaoDao()
         {
             var identificador = _faker.Finance.Bic();
@@ -27,18 +50,26 @@ namespace PosTech.PortFolio.Tests.Fixtures
             var tipoAtivo = _faker.Random.Number(2);
             TipoAtivo enumTipoAtivo = (TipoAtivo)tipoAtivo;
 
-            return new TransacaoDao()
-            {
-                TipoTransacao = enumTipoTransacao.ToString(),
-                DataTransacao = DateTime.Now,
-                AtivoTransacao = new AtivoTransacaoDao() { 
-                    Nome = nome, 
-                    Codigo = identificador, 
-                    Preco = preco, 
+            return GetTransacaoDao(enumTipoTransacao,
+                new AtivoTransacaoDao()
+                {
+                    Nome = nome,
+                    Codigo = identificador,
+                    Preco = preco,
                     Quantidade = quantidade,
                     Tipo = enumTipoAtivo.ToString()
                 },
-                PortFolio = new PortFolioTestFixture().GerarPortFolioDao()
+                new PortFolioTestFixture().GerarPortFolioDao());
+        }
+
+        private TransacaoDao GetTransacaoDao(TipoTransacao tipoTransacao, AtivoTransacaoDao ativo, PortFolioDao portfolio)
+        {
+            return new TransacaoDao()
+            {
+                TipoTransacao = tipoTransacao.ToString(),
+                DataTransacao = DateTime.Now,
+                AtivoTransacao = ativo,
+                PortFolio = portfolio
             };
         }
 

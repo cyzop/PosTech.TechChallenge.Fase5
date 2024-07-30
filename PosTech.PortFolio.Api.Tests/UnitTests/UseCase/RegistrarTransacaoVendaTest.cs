@@ -1,10 +1,10 @@
 ﻿using Bogus;
-using PosTech.PortFolio.Api.Tests.fixtures;
 using PosTech.PortFolio.Entities;
+using PosTech.PortFolio.Messages.Ativo;
 using PosTech.PortFolio.Tests.Fixtures;
 using PosTech.PortFolio.UseCases.Transacao;
 
-namespace PosTech.PortFolio.Tests.UseCase
+namespace PosTech.PortFolio.Tests.UnitTests.UseCase
 {
     [Collection(nameof(TransacaoTestFixtureCollection))]
     public class RegistrarTransacaoVendaTest
@@ -20,7 +20,7 @@ namespace PosTech.PortFolio.Tests.UseCase
 
         [Fact(DisplayName = "Teste de validacao da quantidade para Transação de Venda")]
         [Trait("UseCase.TransacaoVenda", "Teste de validação de quantidade para transação de Venda")]
-        public async void ValidateUseCase_Should_AssertException_VerifyMethod()
+        public void ValidateUseCase_Should_AssertException_VerifyMethod()
         {
             //Arrange
             var portfolio = new PortFolioTestFixture().GerarPortFolioEntity();
@@ -33,24 +33,15 @@ namespace PosTech.PortFolio.Tests.UseCase
             //Act
             var useCase = new RegistrarTransacaoVendaUseCase(portfolio, ativo, quantidade, preco, saldoNoAtivo);
 
-            var verifyAssertException = false;
-            try
-            {
-                var resultado = useCase.FinalizarTransacao();
-            }
-            catch (ArgumentException assertException)
-            {
-                verifyAssertException = true;
-            }
-
             //Assert
-            Assert.Equal(true, verifyAssertException);
-            Assert.Equal(true, quantidade > saldoNoAtivo.Quantidade);
+            var result = Assert.Throws<ArgumentException>(() => useCase.FinalizarTransacao());
+            Assert.Equal(ValidationMessages.MensagemSaldoAtivoInsuficiente, result.Message);
+            Assert.True(quantidade > saldoNoAtivo.Quantidade);
         }
 
         [Fact(DisplayName = "Teste de validacao da Transação de Venda")]
         [Trait("UseCase.TransacaoVenda", "Teste de validação da transação de Venda")]
-        public async void ValidateUseCase_Should_NotException_VerifyMethod()
+        public void ValidateUseCase_Should_NotException_VerifyMethod()
         {
             //Arrange
             var portfolio = new PortFolioTestFixture().GerarPortFolioEntity();
@@ -61,26 +52,26 @@ namespace PosTech.PortFolio.Tests.UseCase
             var preco = _faker.Random.Double(1, 100);
 
             //Act
-            var useCase = new RegistrarTransacaoCompraUseCase(portfolio, ativo, quantidade, preco);
+            var useCase = new RegistrarTransacaoVendaUseCase(portfolio, ativo, quantidade, preco, saldoNoAtivo);
 
             var verifyAssertException = false;
             try
             {
                 var resultado = useCase.FinalizarTransacao();
                 //Assert
-                Assert.Equal(resultado.GetType(), typeof(TransacaoEntity));
+                Assert.Equal(typeof(TransacaoEntity), resultado.GetType());
                 Assert.Equal(resultado.Quantidade, quantidade);
                 Assert.Equal(resultado.Preco, preco);
                 Assert.Equal(resultado.PortFolio, portfolio);
                 Assert.Equal(resultado.Ativo, ativo);
             }
-            catch (ArgumentException assertException)
+            catch (ArgumentException ex)
             {
                 verifyAssertException = true;
             }
 
             //Assert
-            Assert.Equal(false, verifyAssertException);
+            Assert.False(verifyAssertException);
         }
     }
 }

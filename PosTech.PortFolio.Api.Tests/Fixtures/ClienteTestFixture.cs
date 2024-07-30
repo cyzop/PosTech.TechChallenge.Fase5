@@ -2,7 +2,7 @@
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 
-namespace PosTech.PortFolio.Entity.Tests.Fixtures
+namespace PosTech.PortFolio.Tests.Fixtures
 {
     public class ClienteTestFixture
     {
@@ -25,19 +25,27 @@ namespace PosTech.PortFolio.Entity.Tests.Fixtures
             var email = _faker.Person.Email;
             return GerarClienteEntity(email);
         }
-        private ClienteEntity GetEntity(string id, string nome, string email, DateTime data)
+        private static ClienteEntity GetEntity(string id, string nome, string email, DateTime data)
         {
             return new ClienteEntity(nome, email, id, data);
         }
 
+        public UsuarioDao GerarUsuarioDao(string clientId)
+        {
+            return GetUsuarioDao(clientId);
+        }
         public UsuarioDao GerarUsuarioDao()
         {
-            var id = Guid.NewGuid().ToString();
+            return GetUsuarioDao(string.Empty);
+        }
+        private UsuarioDao GetUsuarioDao(string clientId)
+        {
+            var id = string.IsNullOrEmpty(clientId) ? Guid.NewGuid().ToString() : clientId;
             var nome = _faker.Person.FullName;
             var email = _faker.Person.Email;
             var data = _faker.Date.Recent(10, DateTime.Now);
 
-            return new UsuarioDao(nome, email, id, data);
+            return new UsuarioDao(id, nome, email, data);
         }
 
        

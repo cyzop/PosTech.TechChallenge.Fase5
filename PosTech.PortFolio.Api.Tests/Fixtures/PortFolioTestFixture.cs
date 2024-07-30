@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
-using PosTech.PortFolio.Entity.Tests.Fixtures;
 
 namespace PosTech.PortFolio.Tests.Fixtures
 {
@@ -33,14 +32,14 @@ namespace PosTech.PortFolio.Tests.Fixtures
             return new PortFolioEntity(cliente, nome, descricao, id, data);
         }
 
-        public PortFolioDao GerarPortFolioDao()
+        private PortFolioDao GetPortFolioDao(string nome, string clientId)
         {
             var id = Guid.NewGuid().ToString();
-            var nome = _faker.Person.FullName;
+            
             var descricao = _faker.Lorem.Text();
             var data = _faker.Date.Recent(10, DateTime.Now);
 
-            var cliente = new ClienteTestFixture().GerarUsuarioDao();
+            var cliente = new ClienteTestFixture().GerarUsuarioDao(clientId);
 
             return new PortFolioDao()
             {
@@ -51,6 +50,17 @@ namespace PosTech.PortFolio.Tests.Fixtures
                 Usuario = cliente
             };
         }
-
+        public PortFolioDao GerarPortFolioDao() {
+            var nome = _faker.Person.FullName;
+            return GetPortFolioDao(nome, string.Empty);
+        }
+        public PortFolioDao GerarPortFolioDao(string nome, string clientId)
+        {
+            return GetPortFolioDao(nome, clientId);
+        }
+        public PortFolioDao GerarPortFolioDao(string nome)
+        {
+            return GetPortFolioDao(nome, string.Empty);
+        }
     }
 }

@@ -49,7 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DD974675
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{D2DD6BA4-8A06-47DC-B89F-8774E40DE1AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Tests", "PosTech.PortFolio.Api.Tests\PosTech.PortFolio.Tests.csproj", "{0F61BCB3-66E9-4242-B1AA-DE85193F1AF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Tests", "Tests\PosTech.PortFolio.Tests.csproj", "{0F61BCB3-66E9-4242-B1AA-DE85193F1AF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{931ECA61-E5AC-42D7-912E-83EFBAE129C8}"
 EndProject
@@ -71,7 +71,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Transacao
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.PortFolio.Ativo.Api", "PortFolio\API\Postech.PortFolio.Ativo.Api\Postech.PortFolio.Ativo.Api.csproj", "{72F8A6A2-2956-4B3B-B499-A85794565B17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.DatabaseTest", "TestProject1\PosTech.PortFolio.DatabaseTest.csproj", "{DFF6B3BE-97EA-48AA-8EA2-B29A154AF576}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.PortFolio.DatabaseTest", "DatabaseTest\PosTech.PortFolio.DatabaseTest.csproj", "{DFF6B3BE-97EA-48AA-8EA2-B29A154AF576}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

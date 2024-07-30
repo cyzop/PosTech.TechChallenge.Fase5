@@ -16,7 +16,7 @@ namespace PosTech.Cliente.DAO
 
         public UsuarioDao AtualizarUsuario(NovoUsuarioDao usuario)
         {
-            var usuarioEntity = new UsuarioEntity(usuario.Id, usuario.Nome, usuario.Email, usuario.Senha);
+            var usuarioEntity = new UsuarioEntity(usuario.Id, usuario.Nome, usuario.Email);
 
             var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
 
@@ -28,23 +28,14 @@ namespace PosTech.Cliente.DAO
             var usuarioNomeFormatter = new FormatarNomeUseCase(usuarioEntity);
             var usuarioNomeFormatado = usuarioNomeFormatter.Formatar();
 
-            //RN formatar senha (hash)
-            var usuarioHashFormatter = new GerarHashSenhaUseCase(usuarioNomeFormatado);
-            var usuarioSenhaFormatado = usuarioHashFormatter.Formatar();
+            var novoUsuario = _usuarioGateway.RegistrarUsuario(usuarioNomeFormatado);
 
-            var novoUsuario = _usuarioGateway.RegistrarUsuario(usuarioSenhaFormatado);
-
-            //Hide password
-            var passwordCleanner = new EsconderSenhaUseCase(novoUsuario);
-            var usuarioSenhaOculta = passwordCleanner.EsconderSenha();
-            usuario.SetSenha(usuarioSenhaOculta.Senha);
-           
             return usuario;
         }
 
         public UsuarioDao IncluirUsuario(NovoUsuarioDao usuario)
         {
-            var usuarioEntity = new UsuarioEntity(usuario.Id, usuario.Nome, usuario.Email, usuario.Senha);
+            var usuarioEntity = new UsuarioEntity(usuario.Id, usuario.Nome, usuario.Email);
 
             var usuarioBase = _usuarioGateway.ObterPorEmail(usuario.Email);
             
@@ -56,19 +47,8 @@ namespace PosTech.Cliente.DAO
             var usuarioNomeFormatter = new FormatarNomeUseCase(usuarioEntity);
             var usuarioNomeFormatado = usuarioNomeFormatter.Formatar();
 
-            //RN formatar senha (hash)
-            var usuarioHashFormatter = new GerarHashSenhaUseCase(usuarioNomeFormatado);
-            var usuarioSenhaFormatado = usuarioHashFormatter.Formatar();
-
-            var novoUsuario = _usuarioGateway.RegistrarUsuario(usuarioSenhaFormatado);
-
-            //Hide password
-            var passwordCleanner = new EsconderSenhaUseCase(novoUsuario);
-            var usuarioSenhaOculta = passwordCleanner.EsconderSenha();
-
+            var novoUsuario = _usuarioGateway.RegistrarUsuario(usuarioNomeFormatado);
             usuario.SetId(novoUsuario.Id);
-            usuario.SetSenha(usuarioSenhaOculta.Senha);
-
             return usuario;
         }
 

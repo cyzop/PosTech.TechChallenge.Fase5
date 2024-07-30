@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Messages"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Repository.Sql", "PortFolio\Infrastructure\PosTech.PorfFolio.Repository.Sql\PosTech.PortFolio.Repository.Sql.csproj", "{6B301FA0-838B-4820-8468-947B4A565B01}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Adapter", "PosTech.PortFolio.Adapter\PosTech.PortFolio.Adapter.csproj", "{18DCA8E4-C685-4A4A-916F-13069DB79907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Adapter", "PortFolio\Presenter\PosTech.PortFolio.Adapter\PosTech.PortFolio.Adapter.csproj", "{18DCA8E4-C685-4A4A-916F-13069DB79907}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DD974675-3A48-4048-8E54-1CDE91CA60C8}"
 EndProject
@@ -53,11 +53,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{931ECA61-E5AC-42D7-912E-83EFBAE129C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Assertion", "PosTech.PortFolio.Assertion\PosTech.PortFolio.Assertion.csproj", "{B333FE00-9413-4F56-8546-A5CF2465BEF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Assertion", "PortFolio\Shared\PosTech.PortFolio.Assertion\PosTech.PortFolio.Assertion.csproj", "{B333FE00-9413-4F56-8546-A5CF2465BEF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F2D16A2F-B68C-4811-A2F5-63140AACF9E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Cliente.Api", "PosTech.PortFolio.Cliente.Api\PosTech.PortFolio.Cliente.Api.csproj", "{7B97DEE9-4006-446B-9564-A6725A943622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Cliente.Api", "PortFolio\API\PosTech.PortFolio.Cliente.Api\PosTech.PortFolio.Cliente.Api.csproj", "{7B97DEE9-4006-446B-9564-A6725A943622}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolioWeb.Server", "PosTech.PortFolioWeb\Server\PosTech.PortFolioWeb.Server.csproj", "{82A37D50-1B06-4D70-89F5-BE7E8BE7E21D}"
 EndProject

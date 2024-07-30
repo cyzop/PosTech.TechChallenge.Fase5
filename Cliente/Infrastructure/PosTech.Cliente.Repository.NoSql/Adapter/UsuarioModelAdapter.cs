@@ -8,13 +8,12 @@ namespace PosTech.Cliente.Repository.NoSql.Adapter
         {
             return new UsuarioEntity(usuarioModel.Id,
                usuarioModel.Nome,
-               usuarioModel.Email,
-               usuarioModel.Senha);
+               usuarioModel.Email);
         }
 
         public static Model.UsuarioModel FromEntity(UsuarioEntity entity)
         {
-            return new Model.UsuarioModel(entity.Id, entity.Nome, entity.Email, entity.Senha);
+            return new Model.UsuarioModel(entity.Id, entity.Nome, entity.Email);
         }
     }
 }

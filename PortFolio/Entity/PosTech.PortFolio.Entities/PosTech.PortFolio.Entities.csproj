@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\PosTech.PortFolio.Assertion\PosTech.PortFolio.Assertion.csproj" />
     <ProjectReference Include="..\..\Presenter\PosTech.PortFolio.Messages\PosTech.PortFolio.Messages.csproj" />
+    <ProjectReference Include="..\..\Shared\PosTech.PortFolio.Assertion\PosTech.PortFolio.Assertion.csproj" />
   </ItemGroup>
 
 </Project>

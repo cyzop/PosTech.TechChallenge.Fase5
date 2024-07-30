@@ -85,7 +85,7 @@ namespace PosTech.Cliente.Api.Controllers
                 {
                     //update
                     _logger.LogInformation("Put usuário {Nome} {Email}", usuario.Nome, usuario.Email);
-                    var novousuarioDao = new NovoUsuarioDao(usuario.Nome, usuario.Email, usuario.Senha);
+                    var novousuarioDao = new NovoUsuarioDao(usuario.Nome, usuario.Email);
                     var usuariocriado = _usuarioController.IncluirUsuario(novousuarioDao);
 
                     return Ok(usuariocriado);
@@ -126,7 +126,7 @@ namespace PosTech.Cliente.Api.Controllers
                 {
                     //update
                     _logger.LogInformation("Post usuário {Id} {Nome} {Email}", usuario.Id, usuario.Nome, usuario.Email);
-                    var novousuarioDao = new NovoUsuarioDao(usuario.Id, usuario.Nome, usuario.Email, usuario.Senha);
+                    var novousuarioDao = new NovoUsuarioDao(usuario.Id, usuario.Nome, usuario.Email);
                     var usuariocriado = _usuarioController.AtualizarUsuario(novousuarioDao);
 
                     return Ok(usuariocriado);

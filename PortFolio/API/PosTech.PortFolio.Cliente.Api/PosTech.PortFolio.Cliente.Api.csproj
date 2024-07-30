@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PortFolio\Controller\PosTech.PortFolio.Controllers\PosTech.PortFolio.Controllers.csproj" />
-    <ProjectReference Include="..\PortFolio\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
-    <ProjectReference Include="..\PortFolio\Infrastructure\PosTech.PorfFolio.Repository.Sql\PosTech.PortFolio.Repository.Sql.csproj" />
-    <ProjectReference Include="..\PortFolio\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Controller\PosTech.PortFolio.Controllers\PosTech.PortFolio.Controllers.csproj" />
+    <ProjectReference Include="..\..\Gateway\PosTech.PortFolio.Gateways\PosTech.PortFolio.Gateways.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\PosTech.PorfFolio.Repository.Sql\PosTech.PortFolio.Repository.Sql.csproj" />
+    <ProjectReference Include="..\..\Interface\PosTech.PortFolio.Interfaces\PosTech.PortFolio.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

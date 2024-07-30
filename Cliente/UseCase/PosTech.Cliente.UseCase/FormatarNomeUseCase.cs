@@ -20,8 +20,7 @@ namespace PosTech.Cliente.UseCases
 
                 return new UsuarioEntity(_usuario.Id,
                     nomeFormatado,
-                    _usuario.Email,
-                    _usuario.Senha);
+                    _usuario.Email);
             }
             else
                 return _usuario;

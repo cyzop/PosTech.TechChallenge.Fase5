@@ -24,18 +24,11 @@ namespace PosTech.Cliente.Repository.NoSql.Model
             private set;
         }
 
-        public string Senha
-        {
-            get;
-            private set;
-        }
-
-        public UsuarioModel(string id, string nome, string email, string senha)
+        public UsuarioModel(string id, string nome, string email)
         {
             Id = id;
             Nome = nome;
             Email = email;
-            Senha = senha;
         }
     }
 }

@@ -35,9 +35,6 @@ namespace PosTech.Cliente.Repository.NoSql
             var filter = Builders<UsuarioModel>.Filter.Eq(p => p.Id, usuario.Id);
             var entidadeDb = _usuarios.Find(filter).FirstOrDefault();
 
-            if(string.IsNullOrEmpty(usuario.Senha))
-                usuario.SetSenha(entidadeDb.Senha);
-
             var entidadeAtualizar = UsuarioModelAdapter.FromEntity(usuario);
             _usuarios.ReplaceOne(p => p.Id == entidadeDb.Id, entidadeAtualizar);
         }

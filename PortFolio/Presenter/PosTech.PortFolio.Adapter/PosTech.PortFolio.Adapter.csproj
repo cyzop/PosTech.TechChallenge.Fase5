@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PortFolio\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
-    <ProjectReference Include="..\PortFolio\Presenter\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
+    <ProjectReference Include="..\..\Entity\PosTech.PortFolio.Entities\PosTech.PortFolio.Entities.csproj" />
+    <ProjectReference Include="..\PosTech.Portfolio.Dao\PosTech.PortFolio.DAO.csproj" />
   </ItemGroup>
 
 </Project>

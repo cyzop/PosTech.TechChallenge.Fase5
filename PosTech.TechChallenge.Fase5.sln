@@ -71,6 +71,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{49
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosTech.PortFolio.Transacao.Consumer", "PosTech.PortFolio.Transacao.Consumer\PosTech.PortFolio.Transacao.Consumer.csproj", "{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postech.PortFolio.Ativo.Api", "PortFolio\API\Postech.PortFolio.Ativo.Api\Postech.PortFolio.Ativo.Api.csproj", "{72F8A6A2-2956-4B3B-B499-A85794565B17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,10 @@ Global
 		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F8A6A2-2956-4B3B-B499-A85794565B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F8A6A2-2956-4B3B-B499-A85794565B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F8A6A2-2956-4B3B-B499-A85794565B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F8A6A2-2956-4B3B-B499-A85794565B17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,6 +190,7 @@ Global
 		{E79E7D5E-4B96-4406-972D-A73F3E0FF113} = {F2D16A2F-B68C-4811-A2F5-63140AACF9E7}
 		{49F2AB76-8169-4758-BD7C-D044C458DF4F} = {31AB487C-AD4C-4729-9CC9-945EFCABEDB0}
 		{26874F6E-F0AB-4EC6-AB2C-38A29A8FEADC} = {49F2AB76-8169-4758-BD7C-D044C458DF4F}
+		{72F8A6A2-2956-4B3B-B499-A85794565B17} = {79044D11-842C-43E2-B204-2FC7C7C97ECD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9C716AC-59BB-4F94-9335-6CD3C57888BF}

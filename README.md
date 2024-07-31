@@ -48,42 +48,49 @@ Para melhorar organização do código, adotamos o uso de diretórios e dentro d
 Estes diretórios e projetos estão organizados da seguinta maneira:
 
 📁PortFolio
-   📁API
+
+  - 📁API
       - PosTech.PortFolio.Api
       - PosTech.PortFolio.Ativo.Api
       - PosTech.PortFolio.Cliente.Api
    
-   📁Controller
+  - 📁Controller
       - PosTech.PortFolio.Controllers
    
-   📁Entity
+  - 📁Entity
       - PosTech.PortFolio.Enities
    
-   📁Gateway
+  - 📁Gateway
       - PosTech.PortFolio.Gateways
     
-   📁Infrastructure
+  - 📁Infrastructure
       - PosTech.PortFolio.Repository.Sql
 
-   📁Interface
+  - 📁Interface
       - PosTech.PortFolio.Interfaces
 
-   📁Presenter
+  - 📁Presenter
       - PosTech.PortFolio.Adapter
       - PosTech.PortFolio.Dao
       - PosTech.PortFolio.Messages
-
-   📁UseCase
+      
+  - 📁Shared
+      - PosTech.PortFolio.Assertion
+      
+  - 📁UseCase
       - PosTech.PortFolio.UseCases
  
 📁Tests
-   📁IntegratedTests
-     - PosTech.PortFolio.IntegratedTests
-
-   📁UnitTests
-     - PosTech.PortFolio.Tests
+   - PosTech.PortFolio.Tests
    
-📁Web
+  - 📁Fixtures
+  - 📁IntegratedTests
+  - 📁UnitTests
+
+📁Shared
+  - PosTech.TechClallenge.Shared
+    
+📁PosTech.PortFolio.Web
   - PosTech.PortFolioWeb.Client
   - PosTech.PortFolioWeb.Server
   - PosTech.PortFolioWeb.Shared

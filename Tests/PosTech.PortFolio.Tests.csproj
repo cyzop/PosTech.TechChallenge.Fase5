@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DatabaseTest\PosTech.PortFolio.DatabaseTest.csproj" />
     <ProjectReference Include="..\PortFolio\API\PosTech.PortFolio.Api\PosTech.PortFolio.Api.csproj" />
+    <ProjectReference Include="..\PortFolio\API\Postech.PortFolio.Ativo.Api\Postech.PortFolio.Ativo.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>

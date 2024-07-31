@@ -3,6 +3,7 @@ using PosTech.PortFolio.DAO;
 using PosTech.PortFolio.Entities;
 using PosTech.PortFolio.Interfaces.Controller;
 using PosTech.PortFolio.Interfaces.Gateways;
+using PosTech.PortFolio.UseCases.Investimento;
 using PosTech.PortFolio.UseCases.Transacao;
 
 namespace PosTech.PortFolio.Controllers

@@ -7,5 +7,6 @@
         public string Nome { get; set; }
         public string Tipo { get; set; }
         public int Quantidade { get; set; }
+        public double ValorTotal { get; set; }
     }
 }

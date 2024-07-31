@@ -8,21 +8,21 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["PosTech.PortFolio.Cliente.Api/PosTech.PortFolio.Cliente.Api.csproj", "PosTech.PortFolio.Cliente.Api/"]
+COPY ["PortFolio/API/PosTech.PortFolio.Cliente.Api/PosTech.PortFolio.Cliente.Api.csproj", "PortFolio/API/PosTech.PortFolio.Cliente.Api/"]
 COPY ["PortFolio/Controller/PosTech.PortFolio.Controllers/PosTech.PortFolio.Controllers.csproj", "PortFolio/Controller/PosTech.PortFolio.Controllers/"]
-COPY ["PosTech.PortFolio.Adapter/PosTech.PortFolio.Adapter.csproj", "PosTech.PortFolio.Adapter/"]
-COPY ["PortFolio/Entity/PosTech.PortFolio.Entities/PosTech.PortFolio.Entities.csproj", "PortFolio/Entity/PosTech.PortFolio.Entities/"]
-COPY ["PosTech.PortFolio.Assertion/PosTech.PortFolio.Assertion.csproj", "PosTech.PortFolio.Assertion/"]
-COPY ["PortFolio/Presenter/PosTech.PortFolio.Messages/PosTech.PortFolio.Messages.csproj", "PortFolio/Presenter/PosTech.PortFolio.Messages/"]
-COPY ["PortFolio/Presenter/PosTech.Portfolio.Dao/PosTech.PortFolio.DAO.csproj", "PortFolio/Presenter/PosTech.Portfolio.Dao/"]
 COPY ["PortFolio/Gateway/PosTech.PortFolio.Gateways/PosTech.PortFolio.Gateways.csproj", "PortFolio/Gateway/PosTech.PortFolio.Gateways/"]
+COPY ["PortFolio/Entity/PosTech.PortFolio.Entities/PosTech.PortFolio.Entities.csproj", "PortFolio/Entity/PosTech.PortFolio.Entities/"]
+COPY ["PortFolio/Presenter/PosTech.PortFolio.Messages/PosTech.PortFolio.Messages.csproj", "PortFolio/Presenter/PosTech.PortFolio.Messages/"]
+COPY ["PortFolio/Shared/PosTech.PortFolio.Assertion/PosTech.PortFolio.Assertion.csproj", "PortFolio/Shared/PosTech.PortFolio.Assertion/"]
 COPY ["PortFolio/Interface/PosTech.PortFolio.Interfaces/PosTech.PortFolio.Interfaces.csproj", "PortFolio/Interface/PosTech.PortFolio.Interfaces/"]
+COPY ["PortFolio/Presenter/PosTech.Portfolio.Dao/PosTech.PortFolio.DAO.csproj", "PortFolio/Presenter/PosTech.Portfolio.Dao/"]
+COPY ["PortFolio/Presenter/PosTech.PortFolio.Adapter/PosTech.PortFolio.Adapter.csproj", "PortFolio/Presenter/PosTech.PortFolio.Adapter/"]
 COPY ["PortFolio/UseCase/PosTech.PortFolio.UseCases/PosTech.PortFolio.UseCases.csproj", "PortFolio/UseCase/PosTech.PortFolio.UseCases/"]
 COPY ["Shared/PosTech.TechChallenge.Shared/PosTech.TechChallenge.Shared.csproj", "Shared/PosTech.TechChallenge.Shared/"]
 COPY ["PortFolio/Infrastructure/PosTech.PorfFolio.Repository.Sql/PosTech.PortFolio.Repository.Sql.csproj", "PortFolio/Infrastructure/PosTech.PorfFolio.Repository.Sql/"]
-RUN dotnet restore "./PosTech.PortFolio.Cliente.Api/PosTech.PortFolio.Cliente.Api.csproj"
+RUN dotnet restore "./PortFolio/API/PosTech.PortFolio.Cliente.Api/PosTech.PortFolio.Cliente.Api.csproj"
 COPY . .
-WORKDIR "/src/PosTech.PortFolio.Cliente.Api"
+WORKDIR "/src/PortFolio/API/PosTech.PortFolio.Cliente.Api"
 RUN dotnet build "./PosTech.PortFolio.Cliente.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

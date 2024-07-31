@@ -5,6 +5,7 @@
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @using PosTech.PortFolioWeb.Client.Services
 @using PosTech.PortFolioWeb.Shared
+@using System.Globalization
 @attribute [Authorize]
 @inject HttpClient Http
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -48,6 +49,7 @@ else
                 <th>Nome</th>
                 <th>Tipo</th>
                 <th>Quantidade</th>
+                <th>Total Cotado</th>
             </tr>
         </thead>
         <tbody>
@@ -58,10 +60,11 @@ else
                     @if (ativo.Quantidade > 0)
                     {
                         <tr>
-                            <td>@ativo.Codigo</td>
+                        <td>@ativo.Codigo</td>
                         <td>@ativo.Nome</td>
                         <td>@ativo.Tipo</td>
                         <td>@ativo.Quantidade</td>
+                        <td>@FormataValor(ativo.ValorTotal)</td>
                     </tr>
                     }
                 }
@@ -99,7 +102,10 @@ else
         else
             JSRuntime.InvokeAsync<bool>("alert", $"Falha na operação {response.StatusCode}");
     }
-
+    protected string FormataValor(double valor)
+    {
+        return string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+    }
     protected override async Task OnInitializedAsync()
     {
         try

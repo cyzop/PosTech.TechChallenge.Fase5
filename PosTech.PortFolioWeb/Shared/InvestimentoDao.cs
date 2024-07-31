@@ -8,5 +8,7 @@
         public string Tipo { get; set; }
         public int Quantidade { get; set; }
         public string ClienteId { get; set; }
+
+        public double ValorTotal { get; set; }
     }
 }

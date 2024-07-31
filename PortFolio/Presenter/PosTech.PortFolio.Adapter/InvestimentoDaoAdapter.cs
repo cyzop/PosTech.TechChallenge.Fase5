@@ -13,7 +13,8 @@ namespace PosTech.PortFolio.Adapter
                Codigo = entity.Ativo.Codigo,
                Nome = entity.Ativo.Nome,
                Tipo = entity.Ativo.Tipo.ToString(),
-               Quantidade = entity.Quantidade
+               Quantidade = entity.Quantidade,
+               ValorTotal = entity.Valor
             };
         }
     }

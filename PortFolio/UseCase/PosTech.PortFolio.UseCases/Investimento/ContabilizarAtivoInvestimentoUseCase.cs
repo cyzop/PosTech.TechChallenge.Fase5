@@ -1,7 +1,6 @@
 ﻿using PosTech.PortFolio.Entities;
-using PosTech.TechChallenge.Shared;
 
-namespace PosTech.PortFolio.UseCases.Transacao
+namespace PosTech.PortFolio.UseCases.Investimento
 {
     public class ContabilizarAtivoInvestimentoUseCase
     {
@@ -11,7 +10,7 @@ namespace PosTech.PortFolio.UseCases.Transacao
         {
             _transacoes = transacoes;
         }
-        
+
         public InvestimentoEntity CalcularQuantidadePorAtivo(AtivoEntity ativo)
         {
             var listagemPorAtivo = _transacoes?.Where(t => t.AtivoId == ativo.Id).ToList();
@@ -24,7 +23,7 @@ namespace PosTech.PortFolio.UseCases.Transacao
                     quantidadedeAtivos -= entity.Quantidade;
             }
 
-            InvestimentoEntity totalCalculado = new InvestimentoEntity(ativo, quantidadedeAtivos);
+            InvestimentoEntity totalCalculado = new InvestimentoEntity(ativo, quantidadedeAtivos, 0);
             return totalCalculado;
         }
 
@@ -32,11 +31,11 @@ namespace PosTech.PortFolio.UseCases.Transacao
         {
             List<InvestimentoEntity> ret = new List<InvestimentoEntity>();
             var ativos = _transacoes.Select(t => t.Ativo).Distinct().ToList();
-            foreach(AtivoEntity ativo in ativos)
+            foreach (AtivoEntity ativo in ativos)
             {
                 var x = CalcularQuantidadePorAtivo(ativo);
-                if(x!=null)
-                    ret.Add(x); 
+                if (x != null)
+                    ret.Add(x);
             }
             return ret;
         }

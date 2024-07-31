@@ -25,7 +25,7 @@ namespace PosTech.PortFolio.Tests.UnitTests.UseCase
             //Arrange
             var portfolio = new PortFolioTestFixture().GerarPortFolioEntity();
             var ativo = new AtivoTestFixture().GerarAtivoEntity();
-            var saldoNoAtivo = new InvestimentoEntity(ativo, _faker.Random.Number(10));
+            var saldoNoAtivo = new InvestimentoEntity(ativo, _faker.Random.Number(10), _faker.Random.Double(1));
 
             var quantidade = _faker.Random.Number(11, 100);//menor que a quantidade existente
             var preco = _faker.Random.Double(1);
@@ -46,7 +46,7 @@ namespace PosTech.PortFolio.Tests.UnitTests.UseCase
             //Arrange
             var portfolio = new PortFolioTestFixture().GerarPortFolioEntity();
             var ativo = new AtivoTestFixture().GerarAtivoEntity();
-            var saldoNoAtivo = new InvestimentoEntity(ativo, _faker.Random.Number(10));
+            var saldoNoAtivo = new InvestimentoEntity(ativo, _faker.Random.Number(10), _faker.Random.Double(1));
 
             var quantidade = _faker.Random.Number(1, 10);
             var preco = _faker.Random.Double(1, 100);

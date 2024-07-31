@@ -17,6 +17,7 @@ A cotação dos ativos disponíveis para negociação é apresentada no momento 
 
 Este repositório se refere tanto ao Front-end e Back-end da aplicação onde pode ser utilizado com o Swagger (disponível em modo Debug) para visualização dos endpoints disponíveis.
 
+
 # Requisitos
 
 O documento com o levanto de requisitos do software e seus critérios de aceite podem ser encontradas no arquivo "GestaodePortfolios.pdf" na raiz do projeto ou por [aqui](https://github.com/cyzop/PosTech.TechChallenge.Fase5/blob/master/GestaodePortfolios.pdf)
@@ -24,7 +25,7 @@ O documento com o levanto de requisitos do software e seus critérios de aceite 
 
 # 📋 Tecnologias utilizadas
 
-- Microsoft Azure
+- Microsoft Azure 
 - Microsoft .Net Core 7 WebApi (Back-end)
 - Microsoft .Net Blazor WebAsssembly (Front-end)
 - EF Core
@@ -111,15 +112,21 @@ Pode utilizar tanto a instalação local do banco de dados (Sql Server Express),
 
 Ajustar a ConnectionString nos arquivos appsettings.json das apis.
 
-Para criação do banco de dados da aplicação, utilizar a Migration existente no projeto PosTech.PortFolio.Repository.Sql e após sua criação, executar o script de carga e ativos existente no diretório "scripts"
+Para criação do banco de dados da aplicação, utilizar a Migration existente no projeto PosTech.PortFolio.Repository.Sql e após sua criação, executar o script de carga e ativos existente no diretório "scripts". Na etapa de executar a migração existente neste projeto, pode ser necessário informar a ConnectionString no método OnConfigurint que está no ApplicationDdContext.cs do projeto.
+
 
 Para a criação do banco de autenticação, pode-se utilizar a Migration existente no projeto PosTech.PortFolioWeb.Server ou ao acessar a aplicação pela primeira vez será apresentada uma mensagem de erro onde existe a possibilidade de aplicar a migration através de uma opção na tela.
 
 
-## Utilizando o Visual Studio Community 2022 para rodar o Backend localmente
+## Utilizando o Visual Studio Community 2022 para rodar o Front-end e o Back-end localmente
 
 - Abrir a solução do projeto (PosTech.Arquitetura.TechChallenge.sln) no VS
-- Definir o projeto PosTech.Consultorio.Api como projeto para inicialização
+- Realizar o restore das bibliotecas referenciadas
+- Na solution, definir a inicialização de múltiplos projetos, marcando os projetos abaixo com ação de iniciar:
+    - PosTech.PortFolio.Api (back-end)
+    - PosTech.PortFolio.Ativo.Api (back-end)
+    - PosTech.PortFolio.Cliente.Api (back-end)
+    - PosTech.PortFolioWeb.Server (front-end / back-end)
 - Iniciar o projeto com Depuração apertando o F5, para executar o projeto utilizando o Swagger
 
 
@@ -129,16 +136,14 @@ Por possuir uma abordagem mais moderna e facilitando nosso trabalho com a descob
 
 ## Testes Unitários
 
-Utilizamos o xUnit para realizar os testes unitários em nossas projetos, onde cada método é testado isoladamente para garantir que funcione como esperado, independente do restante do sistema.
+Utilizamos o xUnit para realizar os testes unitários em nossas projetos, onde cada componente é testado isoladamente para garantir que funcione como esperado, independente do restante do sistema.
 
-Abrindo a solução do projeto pelo Visual Studio, os projetos de teste unitários estão dentro da pasta Tests, separados em dois subdiretórios: 
-- IntegratedTests
-- UnitTests
+Abrindo a solução do projeto pelo Visual Studio, os projetos de teste unitários estão dentro da pasta Tests, onde existe um mock para o banco de dados que é utilizado nos testes integrados. Nesta pasta estão os testes Integrados e Unitários, separados em sub-diretórios. 
 
 ## Testes de Integração 
 
 Para garantir a correta integração e que as diferentes partes do sistema funcionem corretamente é essencial que se utilize os testes de integração.
-Em nosso projeto, além dos testes unitários, também realizamos testes de integração com xUnit, desta forma é possível verificar se diferentes componentes do sistema funcionam corretamente juntos.
+Em nosso projeto, além dos testes unitários, também realizamos testes de integração com xUnit, desta forma é possível verificar a integração e funcionamento dos diferentes componentes em conjunto.
 
 
 ## Integrantes do Grupo de Trabalho (Grupo 36)
